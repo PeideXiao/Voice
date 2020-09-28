@@ -114,7 +114,7 @@ extension NetworkRouter {
         
         guard let headers = additionalHeader else { return }
         for (key, value) in headers {
-            request.setValue(key, forHTTPHeaderField: value);
+            request.setValue(value, forHTTPHeaderField: key);
         }
     }
     

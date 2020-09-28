@@ -14,7 +14,7 @@ protocol ContentViewDelegate: NSObjectProtocol {
 
 class ContentView: UIView {
     
-    var titles: [String]! {
+    var titles: [String]? {
         didSet {
             contentCollectionView.reloadData()
         }
@@ -30,7 +30,7 @@ class ContentView: UIView {
         configureSubviews();
     }
     
-    convenience init(frame: CGRect, titles:[String]) {
+    convenience init(frame: CGRect, titles:[String]?) {
         self.init(frame: frame);
         self.titles = titles;
     }
@@ -65,7 +65,7 @@ class ContentView: UIView {
 extension ContentView :UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titles.count;
+        return titles?.count ?? 0;
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

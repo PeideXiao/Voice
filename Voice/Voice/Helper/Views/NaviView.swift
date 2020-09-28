@@ -15,7 +15,7 @@ protocol NaviViewDelegate: NSObjectProtocol {
 
 class NaviView: UIView {
 
-    var titles: [String]! {
+    var titles: [String]? {
         didSet {
             naviCollectionView.reloadData()
         }
@@ -32,7 +32,7 @@ class NaviView: UIView {
         configureSubviews();
     }
     
-    convenience init(frame: CGRect, titles:[String]) {
+    convenience init(frame: CGRect, titles:[String]?) {
         self.init(frame: frame);
         self.titles = titles;
     }
@@ -93,18 +93,18 @@ class NaviView: UIView {
 extension NaviView :UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titles.count;
+        return titles?.count ?? 0;
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: NaviCell = collectionView.dequeueReusableCell(withReuseIdentifier: "naviCell", for: indexPath) as! NaviCell;
         cell.backgroundColor = UIColor.white;
-        cell.titleString = titles[indexPath.item];
+        cell.titleString = titles?[indexPath.item];
         return cell;
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let title = titles[indexPath.item];
+        guard let title = titles?[indexPath.item] else { return CGSize.zero }
         let font = UIFont.systemFont(ofSize: 15.0);
         return CGSize(width: title.widthWithConstrainedHeight(naviHeight, font) + 30, height: naviHeight - 10)
     }

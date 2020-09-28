@@ -21,7 +21,7 @@ extension Router: NetworkRouter {
     
     func decode(_ data: Data) -> [EndPoint.ModelType]? {
         let wrapper = try? JSONDecoder().decode(Wrapper<EndPoint.ModelType>.self, from: data)
-        return wrapper?.items;
+        return wrapper?.data;
     }
     
     func request(_ router: EndPoint, completion: @escaping (Array<EndPoint.ModelType>?, URLResponse?, Error?) -> ()) {

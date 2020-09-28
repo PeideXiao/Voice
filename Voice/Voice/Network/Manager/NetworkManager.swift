@@ -26,9 +26,13 @@ enum Result<String> {
 
 
 struct NetworkManager {
+    static let sharedInstance: NetworkManager = NetworkManager();
     static let enviroment: NetworkEnvironment = .production
     static let MovieAPIKey = "YOUR_API_KEY"
-    private let router = Router(endPoint: MovieAPI.newMovies(page: 0))
+    private let movieRouter = Router(endPoint: MovieAPI.newMovies(page: 0))
+    // TO DO
+    
+    private let categoryRouter = Router(endPoint: VideoAPI.Categories(lang: "en", userId: "4122002"))
     
     fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
         switch response.statusCode {
@@ -42,7 +46,7 @@ struct NetworkManager {
     
     
     public func getQuestions(completion: @escaping(_ questions:[Question]?, _ error:String?)-> Void) {
-        router.request(.newMovies(page: 0)) { (questions: [Question]?, response: URLResponse?, error: Error?) in
+        movieRouter.request(.newMovies(page: 0)) { (questions: [Question]?, response: URLResponse?, error: Error?) in
             if error != nil { completion(nil, "Please check your network connection") }
             if let response = response as? HTTPURLResponse {
                 let result = self.handleNetworkResponse(response)
@@ -61,5 +65,24 @@ struct NetworkManager {
     }
     
     
+    func getCategories(completion: @escaping (_ cagegories:[PDCategory]?, _ error:String?) -> Void) {
+        
+        categoryRouter.request(.Categories(lang: "en", userId: "4122002")) { (categories, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let categories = categories else {
+                        return
+                    }
+                    completion(categories, nil)
+                    
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }   
 }
 

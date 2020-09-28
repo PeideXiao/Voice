@@ -47,6 +47,7 @@
 		4C81B31225223CCA00C20A7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81B2EE2522344B00C20A7D /* ContentView.swift */; };
 		4C81B31625223CCD00C20A7D /* ImageBrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C81B2ED2522344A00C20A7D /* ImageBrowserCell.xib */; };
 		4C81B31B2522421D00C20A7D /* PDCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81B31A2522421D00C20A7D /* PDCategory.swift */; };
+		4C81B3202522467100C20A7D /* VideoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C81B31F2522467100C20A7D /* VideoAPI.swift */; };
 		D6244226319A26EB292C87FF /* Pods_VoiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECE1E384731CAA1CE719B6A /* Pods_VoiceTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,7 @@
 		4C81B2EE2522344B00C20A7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4C81B2EF2522344B00C20A7D /* NaviCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NaviCell.xib; sourceTree = "<group>"; };
 		4C81B31A2522421D00C20A7D /* PDCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDCategory.swift; sourceTree = "<group>"; };
+		4C81B31F2522467100C20A7D /* VideoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoAPI.swift; sourceTree = "<group>"; };
 		589EB9DDCB8D120CF1661A64 /* Pods_Voice_VoiceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voice_VoiceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECE1E384731CAA1CE719B6A /* Pods_VoiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		678BAE55547F49B38ED709A5 /* Pods-VoiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoiceTests.release.xcconfig"; path = "Target Support Files/Pods-VoiceTests/Pods-VoiceTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				4C81B21E2522280500C20A7D /* MovieAPI.swift */,
+				4C81B31F2522467100C20A7D /* VideoAPI.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				4C81B2252522280500C20A7D /* UISearchBar_Extension.swift in Sources */,
 				4C81B2362522280500C20A7D /* SceneDelegate.swift in Sources */,
 				4C81B22F2522280500C20A7D /* BaseViewController.swift in Sources */,
+				4C81B3202522467100C20A7D /* VideoAPI.swift in Sources */,
 				4C81B22A2522280500C20A7D /* UIImage_Extension.swift in Sources */,
 				4C81B23D2522280500C20A7D /* MovieAPI.swift in Sources */,
 				4C81B2312522280500C20A7D /* BaseNavigationController.swift in Sources */,

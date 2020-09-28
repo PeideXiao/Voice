@@ -48,3 +48,8 @@ extension MovieApiResponse: Decodable {
         case movies = "results"
     }
 }
+
+
+struct Wrapper<T: Decodable>: Decodable {
+    let data: [T]
+}

@@ -42,8 +42,5 @@ extension Question: Decodable {
     }
 }
 
-struct Wrapper<T: Decodable>: Decodable {
-    let items: [T]
-}
 
 
