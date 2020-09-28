@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-Voice/Pods-Voice-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Keychain/Keychain.framework
+${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
