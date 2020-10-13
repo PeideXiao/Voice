@@ -2,33 +2,41 @@ PODS:
   - Alamofire (4.9.1)
   - Keychain (0.3.1)
   - MBProgressHUD (1.2.0)
+  - MJRefresh (3.5.0)
   - RNCryptor (5.1.0)
   - SDWebImage (5.3.1):
     - SDWebImage/Core (= 5.3.1)
   - SDWebImage/Core (5.3.1)
+  - youtube-ios-player-helper (1.0.2)
 
 DEPENDENCIES:
   - Alamofire
   - Keychain (~> 0.3.1)
   - MBProgressHUD (~> 1.2.0)
+  - MJRefresh (~> 3.5.0)
   - RNCryptor (~> 5.1.0)
   - SDWebImage (~> 5.3.1)
+  - youtube-ios-player-helper (~> 1.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Keychain
     - MBProgressHUD
+    - MJRefresh
     - RNCryptor
     - SDWebImage
+    - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Keychain: ef812eafcf6593fe4409b07cfecc00b95fb373ed
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   RNCryptor: a369134686cd2ad391323cc856b62e591193ba79
   SDWebImage: 7137d57385fb632129838c1e6ab9528a22c666cc
+  youtube-ios-player-helper: 40b96e52c22445f0fdc43731cefa32c67075ff81
 
-PODFILE CHECKSUM: 46c89b142dcba106571e5bae9d1c62977ef369e2
+PODFILE CHECKSUM: 705e30bae3b5daf9fd032b7c8d21a90df97112f8
 
 COCOAPODS: 1.8.4

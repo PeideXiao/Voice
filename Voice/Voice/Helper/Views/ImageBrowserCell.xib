@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,19 +21,62 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hDV-di-jWZ">
                         <rect key="frame" x="0.0" y="0.0" width="415" height="237"/>
                     </imageView>
+                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttg-XL-qz6">
+                        <rect key="frame" x="0.0" y="167" width="415" height="70"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ahk-hi-pj8">
+                            <rect key="frame" x="0.0" y="0.0" width="415" height="70"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LI-Pr-yuO">
+                                    <rect key="frame" x="10" y="10" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="2LI-Pr-yuO" firstAttribute="top" secondItem="ahk-hi-pj8" secondAttribute="top" constant="10" id="Clo-tp-cr0"/>
+                                <constraint firstItem="2LI-Pr-yuO" firstAttribute="leading" secondItem="ahk-hi-pj8" secondAttribute="leading" constant="10" id="vov-Km-WPj"/>
+                            </constraints>
+                        </view>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="faB-ij-dT7"/>
+                        </constraints>
+                        <blurEffect style="regular"/>
+                    </visualEffectView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5W-ow-nMJ">
+                        <rect key="frame" x="0.0" y="20" width="38" height="20.5"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="hDV-di-jWZ" secondAttribute="trailing" id="WHN-sA-4le"/>
+                    <constraint firstAttribute="bottom" secondItem="Ttg-XL-qz6" secondAttribute="bottom" id="Y2i-1J-I1H"/>
                     <constraint firstItem="hDV-di-jWZ" firstAttribute="leading" secondItem="YeU-tb-NSN" secondAttribute="leading" id="ZMV-Am-psH"/>
+                    <constraint firstAttribute="trailing" secondItem="Ttg-XL-qz6" secondAttribute="trailing" id="cSI-PJ-vbf"/>
                     <constraint firstAttribute="bottom" secondItem="hDV-di-jWZ" secondAttribute="bottom" id="cZR-5h-Nqb"/>
+                    <constraint firstItem="s5W-ow-nMJ" firstAttribute="leading" secondItem="YeU-tb-NSN" secondAttribute="leading" id="eSA-O7-JVY"/>
+                    <constraint firstItem="s5W-ow-nMJ" firstAttribute="top" secondItem="YeU-tb-NSN" secondAttribute="top" constant="20" id="lxz-bQ-Lb4"/>
+                    <constraint firstItem="Ttg-XL-qz6" firstAttribute="leading" secondItem="YeU-tb-NSN" secondAttribute="leading" id="nnj-DA-iwX"/>
                     <constraint firstItem="hDV-di-jWZ" firstAttribute="top" secondItem="YeU-tb-NSN" secondAttribute="top" id="oCc-6J-WG6"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="415" height="237"/>
             <connections>
+                <outlet property="blurEffiectView" destination="Ttg-XL-qz6" id="0oc-up-N1n"/>
                 <outlet property="imageView" destination="hDV-di-jWZ" id="Sod-BN-CQT"/>
+                <outlet property="title" destination="2LI-Pr-yuO" id="ntB-me-zyA"/>
+                <outlet property="titleOfHeader" destination="s5W-ow-nMJ" id="L2f-in-5nw"/>
             </connections>
             <point key="canvasLocation" x="351.44927536231887" y="114.17410714285714"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

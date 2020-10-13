@@ -7,32 +7,40 @@
 
 import UIKit
 
+
+enum ContentCellType {
+    case video
+    case word
+    case captionLine
+}
+
 protocol ContentViewDelegate: NSObjectProtocol {
     func collectionView(_ collectionView: UICollectionView, scrollTo index: Int, percent: CGFloat);
     func collectionView(_ collectionView: UICollectionView, didEndDecelerating index: Int);
+    func didSelect(video: VideoModel)
 }
 
 class ContentView: UIView {
     
-    var titles: [String]? {
+    var dailyPickItems: [DailyPickItem]? {
+        didSet {
+            updateImageBrowser();
+        }
+    }
+    
+    var items:[Any]? {
         didSet {
             contentCollectionView.reloadData()
         }
     }
     
+    var isHomePage: Bool = false    
     var contentCollectionView: UICollectionView!
-    let naviHeight:CGFloat = 40
-    let naviBarHeight:CGFloat = 84
     weak var delegate: ContentViewDelegate? = nil
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews();
-    }
-    
-    convenience init(frame: CGRect, titles:[String]?) {
-        self.init(frame: frame);
-        self.titles = titles;
     }
     
     
@@ -46,40 +54,48 @@ class ContentView: UIView {
         contentLayout.scrollDirection = .horizontal;
         contentLayout.minimumInteritemSpacing = 0
         contentLayout.minimumLineSpacing = 0;
+        contentLayout.itemSize = CGSize(width: self.bounds.width, height: self.bounds.height);
         
         contentCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height), collectionViewLayout: contentLayout);
         contentCollectionView.dataSource = self;
         contentCollectionView?.delegate = self;
         contentCollectionView.register(UINib(nibName: "ContentCell", bundle: Bundle.main), forCellWithReuseIdentifier: "contentCell");
         contentCollectionView.isPagingEnabled = true;
+        contentCollectionView.backgroundColor = UIColor.white
         addSubview(contentCollectionView);
+    }
+    
+    private func updateImageBrowser() {
+        self.contentCollectionView.reloadData();
+    }
+    
+    public func updateContentView(items:[Any], cellType: ContentCellType) {
+        if let cell:ContentCell = contentCollectionView.visibleCells.first as? ContentCell{
+            cell.updateContentView(items: items, cellType: cellType)
+        }
     }
     
     public func scrollContent(to index: Int) {
         contentCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: UICollectionView.ScrollPosition.bottom, animated: true);
     }
-    
-    
 }
 
-extension ContentView :UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension ContentView :UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return titles?.count ?? 0;
+        return items?.count ?? 0;
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ContentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "contentCell", for: indexPath) as! ContentCell;
-        cell.backgroundColor = UIColor.gray;
-        cell.indexButton.setTitle("the \(indexPath.item + 1)th", for: .normal);
-        cell.showHeader = indexPath.item == 0;
+        cell.backgroundColor = UIColor.white;
+        cell.showHeader = (indexPath.item == 0 && isHomePage);
+        cell.delegate = self;
+        if indexPath.item == 0 {
+            cell.dailyPickItems = self.dailyPickItems;
+        }
         return cell;
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT - naviBarHeight - naviHeight);
-    }
-    
 }
 
 
@@ -95,109 +111,13 @@ extension ContentView: UIScrollViewDelegate {
         let index = scrollView.contentOffset.x / SCREEN_WIDTH
         print("decelerating: \(index)")
         self.delegate?.collectionView(scrollView as! UICollectionView, didEndDecelerating: Int(index))
+
     }
 }
 
-class ContentCell: UICollectionViewCell {
-    
-    @IBOutlet weak var indexButton: UIButton!
-    let images:[String] = ["01", "02","03"];
-    
-    var layout: UICollectionViewFlowLayout!
-    var imageBrowserView: UICollectionView!
-    var pageControl: UIPageControl!
-    
-    var showHeader:Bool = false {
-        didSet {
-            imageBrowserView.isHidden = !showHeader;
-            pageControl.isHidden = !showHeader;
-        }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame);
-        configureHeaderView();
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews();
-        imageBrowserView.frame = CGRect(x: 0, y: 10, width: SCREEN_WIDTH, height: 270);
-        pageControl.frame =  CGRect(x: 0, y: imageBrowserView.frame.maxY, width: SCREEN_WIDTH, height: 30);
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder);
-        self.configureHeaderView();
-    }
-    
-    func configureHeaderView() {
-        layout = UICollectionViewFlowLayout();
-        layout.scrollDirection = .horizontal;
-        layout.minimumInteritemSpacing = 0;
-        layout.minimumLineSpacing = 0;
-        
-        imageBrowserView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        imageBrowserView.dataSource = self;
-        imageBrowserView.delegate = self;
-        imageBrowserView.isPagingEnabled = true;
-        imageBrowserView.showsHorizontalScrollIndicator = false
-        imageBrowserView.register(UINib(nibName: "ImageBrowserCell", bundle: Bundle.main), forCellWithReuseIdentifier: "imageBrowserCell");
-        addSubview(imageBrowserView);
-        
-        pageControl = UIPageControl()
-        pageControl.numberOfPages = 3;
-        addSubview(pageControl);
-        
-        DispatchQueue.main.async {
-            self.imageBrowserView.scrollToItem(at: IndexPath(item: self.images.count, section: 0), at: UICollectionView.ScrollPosition.right, animated: false)
-        }
-        
-    }
-    
-}
 
-extension ContentCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count * 2;
+extension ContentView: ContentCellDelegate {
+    func tableView(_ tableView: UITableView, didSelect video: VideoModel) {
+        self.delegate?.didSelect(video: video)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: ImageBrowserCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageBrowserCell", for: indexPath) as! ImageBrowserCell;
-        cell.imageView.image = UIImage(named: images[indexPath.item % images.count]);
-        return cell;
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: SCREEN_WIDTH, height: 250);
-    }
-}
-
-extension ContentCell: UIScrollViewDelegate {
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-       
-        
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let browserView: UICollectionView = scrollView as! UICollectionView;
-        var offset: Int = Int(scrollView.contentOffset.x / SCREEN_WIDTH);
-        
-         
-        if offset == 0 || offset == browserView.numberOfItems(inSection: 0) - 1 {
-//            print("offset:\(offset)")
-            offset = images.count - (offset == 0 ? 0 : 1);
-            
-        }
-//        print("offset!!!:\(offset)")
-        scrollView.contentOffset = CGPoint(x: CGFloat(offset) * SCREEN_WIDTH, y: 0);
-        
-    }
-    
-}
-
-class ImageBrowserCell: UICollectionViewCell {
-    @IBOutlet weak var imageView: UIImageView!
-    
-    
 }

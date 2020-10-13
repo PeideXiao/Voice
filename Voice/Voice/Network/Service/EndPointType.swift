@@ -16,9 +16,20 @@ public enum HTTPMethod: String {
 }
 
 protocol EndPointType {
-    associatedtype ModelType: Decodable
+   
     var path: String { get }
     var httpMethod: HTTPMethod { get }
     var task: HTTPTask { get }
     var headers: HTTPHeaders? { get }
+}
+
+
+extension EndPointType {
+    var baseURL: URL {
+        
+        guard let baseURL = URL(string: "https://api.themoviedb.org/3/movie/") else {
+            return URL(string: "https://www.google.com")!
+        }
+        return baseURL
+    }
 }

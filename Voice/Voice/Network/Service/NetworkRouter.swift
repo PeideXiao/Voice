@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+let kBoundary = "alamofire.boundary.2f832832f886c5c1"
 //public typealias NetworkRouterCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?)->()
 public enum NetworkEnvironment {
     case qa
@@ -17,39 +17,37 @@ public enum NetworkEnvironment {
 }
 
 fileprivate var environmentBaseURL: String {
-     switch NetworkManager.enviroment {
-     case .production: return "https://vtapi.voicetube.com"
-     case .qa: return ""
-     case .staging:  return ""
-     }
- }
- 
+    switch NetworkManager.enviroment {
+    case .production: return "https://vtapi.voicetube.com"
+    case .qa: return ""
+    case .staging:  return ""
+    }
+}
+
 fileprivate var baseURL: URL {
-     guard let url = URL(string: environmentBaseURL) else { fatalError("BaseURL could not be configured.") }
-     return url
- }
+    guard let url = URL(string: environmentBaseURL) else { fatalError("BaseURL could not be configured.") }
+    return url
+}
 
 fileprivate var task: URLSessionTask?
-
+public typealias NetworkRouterCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> ()
 
 protocol NetworkRouter: class {
-    associatedtype ModelType
     associatedtype EndPoint: EndPointType
-    func request(_ router: EndPoint, completion:@escaping(ModelType?, URLResponse?, Error?)->())
-    func decode(_ data: Data)-> ModelType?
+    func request(_ router: EndPoint, completion:@escaping NetworkRouterCompletion)
     func cancel()
 }
 
-extension NetworkRouter {
-   
-   public func loadRequest(_ router: EndPoint, completion: @escaping (ModelType?, URLResponse?, Error?) -> ()) {
+class Router<EndPoint: EndPointType>: NetworkRouter {
+    public func request(_ router: EndPoint, completion: @escaping NetworkRouterCompletion) {
         let session = URLSession.shared
         
         do {
             let request = try self.buildRequest(from: router);
-             task = session.dataTask(with: request, completionHandler: { [weak self](data, response, error) in
+            print("***\(request.url!)")
+            task = session.dataTask(with: request, completionHandler: { (data, response, error) in
                 guard let data = data else { return }
-                completion(self?.decode(data), response, error);
+                completion(data, response, error);
             })
             task!.resume();
         } catch {
@@ -58,12 +56,12 @@ extension NetworkRouter {
     }
     
     
-    public func taskCancel() {
+    public func cancel() {
         task?.cancel()
     }
     
-    /// FILEPRIVATE functions
     
+    // FILEPRIVATE functions
     fileprivate func buildRequest(from route: EndPoint) throws -> URLRequest {
         
         var request = URLRequest(url: baseURL.appendingPathComponent(route.path),
@@ -71,6 +69,12 @@ extension NetworkRouter {
                                  timeoutInterval: 10.0)
         
         request.httpMethod = route.httpMethod.rawValue
+        
+        if route.headers != nil {
+            for (key, value) in route.headers! {
+                request.setValue(value, forHTTPHeaderField: key)
+            }
+        }
         
         do  {
             switch route.task {
@@ -83,6 +87,10 @@ extension NetworkRouter {
             case .requestParametersAndHeaders(let bodyParameters, let urlParameters, let additionalHeader):
                 self.addAdditionalHeader(additionalHeader: additionalHeader, request: &request);
                 try self.configureParameters(bodyParameters: bodyParameters, urlParameters: urlParameters, request: &request)
+                
+            case .uploadData(let bodyParameters, let fileParameters, let additionalHeader):
+                self.addAdditionalHeader(additionalHeader: additionalHeader, request: &request)
+                self.upload(bodyParameters: bodyParameters, fileParameters: fileParameters, request: &request)
             }
             
             return request
@@ -92,10 +100,49 @@ extension NetworkRouter {
         }
     }
     
+    fileprivate func upload(bodyParameters: Parameters?, fileParameters: Parameters?, request: inout URLRequest) {
+        
+        let type = "multipart/form-data; boundary=\(kBoundary)"
+        request.setValue(type, forHTTPHeaderField: "Content-Type")
+        if let data = fetchHttpBody(bodyParameters: bodyParameters, fileParameters: fileParameters) {
+            request.httpBody = data
+        }
+    }
+    
+    
+    fileprivate func fetchHttpBody(bodyParameters: Parameters?, fileParameters: Parameters?) -> Data?{
+        var data = Data()
+       
+        if fileParameters != nil {
+            for(k, v) in fileParameters! {
+                let headerStr = "\r\n--\(kBoundary)\r\n" + "Content-Disposition: form-data; name=\"soundFile\"; filename=\"\(k)\"\r\n" + "Content-Type: audio/x-m4a\r\n\r\n";
+                if let headerData = headerStr.data(using: String.Encoding.utf8) {
+                    data.append(headerData)
+                    if let d: Data = v as? Data {
+                        data.append(d)
+                    }
+                }
+            }
+        }
+        
+        
+        if bodyParameters != nil {
+            for (k, v) in bodyParameters! {
+                let headerStr = "\r\n--\(kBoundary)\r\n" + "Content-Disposition: form-data; name=\"\(k)\"\r\n\r\n" + "\(v)";
+                if let headerData = headerStr.data(using: String.Encoding.utf8) {
+                    data.append(headerData)
+                }
+            }
+        }
+        
+        let footerStr = "\r\n--\(kBoundary)--\r\n";
+        data.append(footerStr.data(using: .utf8)!)
+        
+        return data
+    }
     
     
     fileprivate func configureParameters(bodyParameters: Parameters?, urlParameters: Parameters?, request: inout URLRequest) throws {
-        
         do {
             if let bodyParameters = bodyParameters {
                 try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters)
@@ -103,6 +150,9 @@ extension NetworkRouter {
             if let urlParameters = urlParameters {
                 try URLParameterEncoder.encode(urlRequest: &request, with: urlParameters)
             }
+            
+            
+            
         } catch {
             throw error
         }
@@ -117,6 +167,4 @@ extension NetworkRouter {
             request.setValue(value, forHTTPHeaderField: key);
         }
     }
-    
-    
 }

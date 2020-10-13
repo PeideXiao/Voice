@@ -32,4 +32,10 @@ extension Date {
         if let date:Date = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: self) { return date; }
         return Date();
     }
+    
+    func toString() -> String{
+        let formatter:DateFormatter = DateFormatter();
+        formatter.dateFormat = "MM/dd";
+        return formatter.string(from: self);
+    }
 }

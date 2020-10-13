@@ -8,6 +8,385 @@
 
 import UIKit
 
+struct NetworkManager {
+    static let sharedInstance: NetworkManager = NetworkManager();
+    static let enviroment: NetworkEnvironment = .production
+    
+    
+    private let videoRouter = Router<VideoAPI>();
+    private let challengeRouter = Router<ChallengeAPI>();
+    private let reviewRouter = Router<ReviewAPI>();
+    
+    // ============================================================================
+    // MARK: - Videos
+    // ============================================================================
+    
+    func getCategories(userId: String,  completion: @escaping (_ cagegories:[PDCategory]?, _ error:String?) -> Void) {
+        
+        videoRouter.request(.Categories(lang: "en", userId: userId)) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let categoryData = try JSONDecoder().decode(ArrWrapper<PDCategory>.self, from: responseData)
+                        completion(categoryData.data, nil);
+                        
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                    
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    
+    func getDailyPick(completion: @escaping (_ dailyPicks:[DailyPickItem]? , _ error: String?)->Void) {
+        videoRouter.request(.DailyPick) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let _ = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+                        // print(jsonData)
+                        let categoryData = try JSONDecoder().decode(DictWrapper<DailyPickModel>.self, from: responseData)
+                        let resultDict = categoryData.data as DailyPickModel;
+                        completion(resultDict.items, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    
+    func getVideos(query:String, userId:String, analyticsKey:String, offset:Int, limit:Int? = 50, completion: @escaping (_ videos: [VideoModel]?, _ error: String?)->()) {
+        videoRouter.request(.Video(query:query, lang: "en", userId: userId, analyticsKey: analyticsKey, offset: offset, limit: limit ?? 50)) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let _ = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+                        //                        print(jsonData)
+                        let videoData = try JSONDecoder().decode(ArrWrapper<VideoModel>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    func getVideoDetail(videoId: Int, language: String? = "en", completion: @escaping (_ videoDetail: VideoDetailModel?, _ error: String?)->()) {
+        videoRouter.request(.VideoDetail(lang: language!, videoId: videoId)) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let _ = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+                        //                        print(jsonData)
+                        let videoData = try JSONDecoder().decode(DictWrapper<VideoDetailModel>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    
+    // ============================================================================
+    // MARK: - Pronunciation Challenges
+    // ============================================================================
+    
+    func getPronunciationChallenges(limit: Int? = 20, offset: Int, completion: @escaping(_ pronauciationChallenges: [ChallengeModel]?, _ error: String?)->()) {
+        challengeRouter.request(.Challenge(limit: limit!, offset: offset)) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let _ = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+                        let videoData = try JSONDecoder().decode(ArrWrapper<ChallengeModel>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+        
+    func getChallengeDetail(id: Int, completion: @escaping (_ detail: ChallengeDetailModel?, _ error: String?)->()){
+        challengeRouter.request(.ChallengeDetail(id: id)) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let _ = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+//                        print(jsonData)
+                        let videoData = try JSONDecoder().decode(DictWrapper<ChallengeDetailModel>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    func getComments(id: Int, mode: FetchMode, limit: Int? = 20, offset: Int, completion: @escaping (_ comments: [Comment]?, _ error: String?)->()) {
+        challengeRouter.request(.Comment(id: id, mode: mode, limit: limit!, offset: offset)) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let _ = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+//                        print(jsonData)
+                        let videoData = try JSONDecoder().decode(ArrWrapper<Comment>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    func submitComment(id: Int, data: Data?, text: String, completion:@escaping (_ comment: Comment?, _ error: String?)->()) {
+        
+        challengeRouter.request(.SubmitComment(id: id, byteData: data, text: text)) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+                        print(jsonData)
+                        let videoData = try JSONDecoder().decode(DictWrapper<Comment>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    
+    // ============================================================================
+    // MARK: -- ReviewRouter
+    // ============================================================================
+    
+    func getWatchedVideos(limit: Int? = 20, offset: Int, completion:@escaping(_ videos:[VideoModel]?, _ error: String?)->()) {
+        reviewRouter.request(.Watched(limit: limit!, offset: offset)) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+//                        print(jsonData)
+                        let videoData = try JSONDecoder().decode(ArrWrapper<VideoModel>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    
+    func getSavedVideos(limit: Int? = 20, offset: Int, completion:@escaping(_ videos:[VideoModel]?, _ error: String?)->()) {
+        reviewRouter.request(.SavedVideos(isPro: 1, limit: limit!, offset: offset)) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+//                        print(jsonData)
+                        let videoData = try JSONDecoder().decode(ArrWrapper<VideoModel>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    func getSavedWords(limit: Int? = 20, offset: Int, direction: String, key: String, completion:@escaping(_ words:[DictionaryWord]?, _ error: String?)->()) {
+        reviewRouter.request(.SavedWords(limit: limit!, offset: offset, direction: direction, key: key)) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+                        print(jsonData)
+                        let videoData = try JSONDecoder().decode(ArrWrapper<DictionaryWord>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    
+    func getSavedCaptionLines(limit: Int? = 20, offset: Int, direction: String, key: String, completion:@escaping(_ lines:[CaptionLine]?, _ error: String?)->()) {
+        reviewRouter.request(.SavedCaptionLines(limit: limit!, offset: offset, direction: direction, key: key)) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+                        print(jsonData)
+                        let videoData = try JSONDecoder().decode(ArrWrapper<CaptionLine>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    
+    
+    fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
+        switch response.statusCode {
+        case 200...299: return .success
+        case 401...500: return  .failure(NetworkResponse.authenticationError.rawValue)
+        case 501...599: return .failure(NetworkResponse.badRequest.rawValue)
+        case 600: return .failure(NetworkResponse.outdated.rawValue)
+        default: return .failure(NetworkResponse.failed.rawValue);
+        }
+    }
+}
+
+
 enum NetworkResponse: String {
     case success
     case authenticationError = "You need to be authenticated first."
@@ -25,64 +404,4 @@ enum Result<String> {
 }
 
 
-struct NetworkManager {
-    static let sharedInstance: NetworkManager = NetworkManager();
-    static let enviroment: NetworkEnvironment = .production
-    static let MovieAPIKey = "YOUR_API_KEY"
-    private let movieRouter = Router(endPoint: MovieAPI.newMovies(page: 0))
-    // TO DO
-    
-    private let categoryRouter = Router(endPoint: VideoAPI.Categories(lang: "en", userId: "4122002"))
-    
-    fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
-        switch response.statusCode {
-        case 200...299: return .success
-        case 401...500: return  .failure(NetworkResponse.authenticationError.rawValue)
-        case 501...599: return .failure(NetworkResponse.badRequest.rawValue)
-        case 600: return .failure(NetworkResponse.outdated.rawValue)
-        default: return .failure(NetworkResponse.failed.rawValue);
-        }
-    }
-    
-    
-    public func getQuestions(completion: @escaping(_ questions:[Question]?, _ error:String?)-> Void) {
-        movieRouter.request(.newMovies(page: 0)) { (questions: [Question]?, response: URLResponse?, error: Error?) in
-            if error != nil { completion(nil, "Please check your network connection") }
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                switch result {
-                case .success:
-                    guard let questions = questions else {
-                        return
-                    }
-                    completion(questions, nil)
-                    
-                case .failure(let networkFailureError):
-                    completion(nil, networkFailureError);
-                }
-            }
-        }
-    }
-    
-    
-    func getCategories(completion: @escaping (_ cagegories:[PDCategory]?, _ error:String?) -> Void) {
-        
-        categoryRouter.request(.Categories(lang: "en", userId: "4122002")) { (categories, response, error) in
-            if error != nil { completion(nil, "Please check your network connection") }
-            if let response = response as? HTTPURLResponse {
-                let result = self.handleNetworkResponse(response)
-                switch result {
-                case .success:
-                    guard let categories = categories else {
-                        return
-                    }
-                    completion(categories, nil)
-                    
-                case .failure(let networkFailureError):
-                    completion(nil, networkFailureError);
-                }
-            }
-        }
-    }   
-}
 

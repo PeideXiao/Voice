@@ -107,3 +107,24 @@ extension String {
     
     
 }
+
+
+extension String {
+        func splitToDictionary()->[String: String]? {
+        var temp = [String : String]()
+        for subString in  self.split(separator: "&") {
+            guard let key = subString.split(separator: "=").first,  let value = subString.split(separator: "=").last else { return nil }
+            temp[String(key)] = String(value)
+        }
+        return temp;
+    }
+}
+
+
+extension String {
+    func splitTo(with charactor: Character)-> [Substring] {
+        let temp = self.prefix(self.count - 1); // get rid of '.'
+        let subStrings = temp.split(separator: " ")
+        return subStrings
+    }
+}

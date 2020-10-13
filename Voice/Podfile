@@ -11,6 +11,8 @@ target 'Voice' do
   pod 'MBProgressHUD', '~> 1.2.0'
   pod 'SDWebImage', '~> 5.3.1'
   pod 'Keychain', '~> 0.3.1'
+  pod 'MJRefresh', '~> 3.5.0'
+  pod 'youtube-ios-player-helper', '~> 1.0'
 
   target 'VoiceTests' do
     inherit! :search_paths

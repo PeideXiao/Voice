@@ -13,6 +13,7 @@ public struct JSONParameterEncoder: ParameterEncoder {
         do {
             let jsonAsData = try JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
             urlRequest.httpBody = jsonAsData
+            urlRequest.setValue("\(jsonAsData.count)", forHTTPHeaderField: "Countent-Length");
             if (urlRequest.value(forHTTPHeaderField: "Content-Type") == nil) {
                 urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type");
             }

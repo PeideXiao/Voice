@@ -25,6 +25,62 @@
             </objects>
             <point key="canvasLocation" x="2825" y="-5"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="ded-Nt-1mm">
+            <objects>
+                <tableViewController id="Wg6-au-q5g" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wV4-uU-rGV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="174" id="JM4-YP-37b">
+                                <rect key="frame" x="0.0" y="28" width="414" height="174"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JM4-YP-37b" id="GHw-qG-NEU">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="174"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RuF-V7-zxR">
+                                            <rect key="frame" x="0.0" y="134" width="414" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="diV-JU-ieb"/>
+                                            </constraints>
+                                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <state key="normal" title="How to userundergo?" image="questionmark.circle.fill" catalog="system">
+                                                <color key="titleColor" systemColor="systemBlueColor"/>
+                                            </state>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9l-ZW-TcJ">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="134"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="a9l-ZW-TcJ" firstAttribute="leading" secondItem="GHw-qG-NEU" secondAttribute="leading" constant="20" id="AOb-Rs-Lj3"/>
+                                        <constraint firstAttribute="trailing" secondItem="RuF-V7-zxR" secondAttribute="trailing" id="Da6-z8-YE7"/>
+                                        <constraint firstAttribute="trailing" secondItem="a9l-ZW-TcJ" secondAttribute="trailing" constant="20" id="eHi-3t-grX"/>
+                                        <constraint firstAttribute="bottom" secondItem="RuF-V7-zxR" secondAttribute="bottom" id="gYq-ff-4du"/>
+                                        <constraint firstItem="RuF-V7-zxR" firstAttribute="leading" secondItem="GHw-qG-NEU" secondAttribute="leading" id="qRI-ic-WBm"/>
+                                        <constraint firstItem="RuF-V7-zxR" firstAttribute="top" secondItem="a9l-ZW-TcJ" secondAttribute="bottom" id="s6b-lH-1So"/>
+                                        <constraint firstItem="a9l-ZW-TcJ" firstAttribute="top" secondItem="GHw-qG-NEU" secondAttribute="top" id="x0a-2h-Yhg"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="Wg6-au-q5g" id="Jvf-P0-pGb"/>
+                            <outlet property="delegate" destination="Wg6-au-q5g" id="d5K-2p-CVE"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gkr-ZI-ht2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4271.0144927536239" y="0.6696428571428571"/>
+        </scene>
         <!--Watch-->
         <scene sceneID="cLQ-HF-MuH">
             <objects>
@@ -52,6 +108,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="nuZ-52-8iP" customClass="BaseTabBarController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tuH-7P-j2i">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" systemColor="systemGray5Color"/>
@@ -71,7 +128,7 @@
         <!--Pronuncitaion Challenge-->
         <scene sceneID="Uj3-yw-94g">
             <objects>
-                <viewController id="xWT-wU-8co" customClass="DashboardViewController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xWT-wU-8co" customClass="ChallengeViewController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z8L-Xv-AwM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +165,7 @@
         <!--Pro-->
         <scene sceneID="krl-AY-L3V">
             <objects>
-                <viewController id="pPA-QV-Yec" customClass="DashboardViewController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pPA-QV-Yec" customClass="ProViewController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VEh-Bh-YdJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,7 +202,7 @@
         <!--Ranking-->
         <scene sceneID="Ebn-gI-rO6">
             <objects>
-                <viewController id="Ifr-MH-Keo" customClass="DashboardViewController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ifr-MH-Keo" customClass="RankingViewController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wce-fr-kz3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -182,7 +239,7 @@
         <!--Review-->
         <scene sceneID="bbT-xK-6PX">
             <objects>
-                <viewController id="zVV-hU-fGZ" customClass="DashboardViewController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zVV-hU-fGZ" customClass="ReviewViewController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jyg-8t-VwT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,6 +275,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="study" width="32" height="32"/>
         <image name="study (1)" width="32" height="32"/>
         <image name="top-three" width="32" height="32"/>
@@ -230,6 +288,9 @@
         <image name="youtube (1)" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

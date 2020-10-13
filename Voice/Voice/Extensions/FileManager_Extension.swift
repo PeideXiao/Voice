@@ -17,6 +17,12 @@ extension FileManager {
         return NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0];
     }
     
+    func documentsDirectory() -> URL {
+        let paths = self.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
+        return paths[0]
+    }
+
+    
     // Creates a directory tree for a file/directory path.
    func createFilePath(path:String) throws {
         let fileManager:FileManager = FileManager.default;
