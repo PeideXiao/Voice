@@ -33,7 +33,7 @@ class ReviewViewController: UIViewController {
         contentView.delegate = self;
         view.addSubview(contentView);
         contentView.items = self.categories;
-        
+        self.view.backgroundColor = UIColor.systemGray6
     }
     
     func loadRecentlyWatched() {

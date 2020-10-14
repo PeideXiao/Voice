@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		355A58BA84873D70AF7B72B5 /* Pods_Voice_VoiceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 589EB9DDCB8D120CF1661A64 /* Pods_Voice_VoiceUITests.framework */; };
 		3DB7E6391DF09DA2CCED335F /* Pods_Voice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A57560F340196AFB1321FAF /* Pods_Voice.framework */; };
+		4C37D93E25374C6800B8113A /* ProBannerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C37D93D25374C6800B8113A /* ProBannerInfo.swift */; };
 		4C6599E9253498960072E89A /* ReviewAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6599E8253498960072E89A /* ReviewAPI.swift */; };
 		4C659A092534C7610072E89A /* DictionaryWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C659A072534C7610072E89A /* DictionaryWordCell.swift */; };
 		4C659A0A2534C7610072E89A /* DictionaryWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C659A082534C7610072E89A /* DictionaryWordCell.xib */; };
@@ -18,6 +19,17 @@
 		4C659AA62535F0010072E89A /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C659AA52535F0010072E89A /* SelfSizedTableView.swift */; };
 		4C659AAB2535F5D10072E89A /* DefinitionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C659AAA2535F5D10072E89A /* DefinitionHeader.swift */; };
 		4C659AB02535F5DA0072E89A /* DefinitionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C659AAF2535F5DA0072E89A /* DefinitionHeader.xib */; };
+		4C659AB8253630260072E89A /* RankingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C659AB7253630260072E89A /* RankingHeader.swift */; };
+		4C659AC0253630310072E89A /* RankingHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C659ABF253630310072E89A /* RankingHeader.xib */; };
+		4C659AC6253633090072E89A /* RankDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C659AC4253633090072E89A /* RankDetailCell.swift */; };
+		4C659AC7253633090072E89A /* RankDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C659AC5253633090072E89A /* RankDetailCell.xib */; };
+		4C659ACC253641C70072E89A /* RankingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C659ACB253641C70072E89A /* RankingFooter.swift */; };
+		4C659AD1253641D20072E89A /* RankingFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C659AD0253641D20072E89A /* RankingFooter.xib */; };
+		4C659AD9253646BE0072E89A /* RankList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C659AD8253646BE0072E89A /* RankList.swift */; };
+		4C659ADE253647E20072E89A /* RankingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C659ADD253647E20072E89A /* RankingAPI.swift */; };
+		4C659AE625364AA70072E89A /* RemainTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C659AE525364AA70072E89A /* RemainTime.swift */; };
+		4C659B0525364BB30072E89A /* Int_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C659B0425364BB30072E89A /* Int_Extension.swift */; };
+		4C659B25253734BE0072E89A /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C659B24253734BE0072E89A /* Plan.swift */; };
 		4C71437925229748009FE342 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71437825229748009FE342 /* VideoModel.swift */; };
 		4C71437E2522A022009FE342 /* VideoContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C71437D2522A022009FE342 /* VideoContentCell.xib */; };
 		4C71438625235DAA009FE342 /* UIViewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C71438525235DAA009FE342 /* UIViewController_Extension.swift */; };
@@ -125,6 +137,7 @@
 
 /* Begin PBXFileReference section */
 		0A57560F340196AFB1321FAF /* Pods_Voice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C37D93D25374C6800B8113A /* ProBannerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProBannerInfo.swift; sourceTree = "<group>"; };
 		4C6599E8253498960072E89A /* ReviewAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAPI.swift; sourceTree = "<group>"; };
 		4C659A072534C7610072E89A /* DictionaryWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryWordCell.swift; sourceTree = "<group>"; };
 		4C659A082534C7610072E89A /* DictionaryWordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DictionaryWordCell.xib; sourceTree = "<group>"; };
@@ -134,6 +147,17 @@
 		4C659AA52535F0010072E89A /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		4C659AAA2535F5D10072E89A /* DefinitionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionHeader.swift; sourceTree = "<group>"; };
 		4C659AAF2535F5DA0072E89A /* DefinitionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefinitionHeader.xib; sourceTree = "<group>"; };
+		4C659AB7253630260072E89A /* RankingHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingHeader.swift; sourceTree = "<group>"; };
+		4C659ABF253630310072E89A /* RankingHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingHeader.xib; sourceTree = "<group>"; };
+		4C659AC4253633090072E89A /* RankDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDetailCell.swift; sourceTree = "<group>"; };
+		4C659AC5253633090072E89A /* RankDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankDetailCell.xib; sourceTree = "<group>"; };
+		4C659ACB253641C70072E89A /* RankingFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFooter.swift; sourceTree = "<group>"; };
+		4C659AD0253641D20072E89A /* RankingFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingFooter.xib; sourceTree = "<group>"; };
+		4C659AD8253646BE0072E89A /* RankList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankList.swift; sourceTree = "<group>"; };
+		4C659ADD253647E20072E89A /* RankingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingAPI.swift; sourceTree = "<group>"; };
+		4C659AE525364AA70072E89A /* RemainTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainTime.swift; sourceTree = "<group>"; };
+		4C659B0425364BB30072E89A /* Int_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int_Extension.swift; sourceTree = "<group>"; };
+		4C659B24253734BE0072E89A /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		4C71437825229748009FE342 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		4C71437D2522A022009FE342 /* VideoContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoContentCell.xib; sourceTree = "<group>"; };
 		4C71438525235DAA009FE342 /* UIViewController_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController_Extension.swift; sourceTree = "<group>"; };
@@ -339,6 +363,7 @@
 				4C7143C825237C35009FE342 /* Dictionary_Extension.swift */,
 				4C71449A2527C64C009FE342 /* UIView_Extension.swift */,
 				4C659A152534D7470072E89A /* Array_Extension.swift */,
+				4C659B0425364BB30072E89A /* Int_Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -436,6 +461,7 @@
 				4C81B31F2522467100C20A7D /* VideoAPI.swift */,
 				4CA0D9F2252E318100806C7E /* ChallengeAPI.swift */,
 				4C6599E8253498960072E89A /* ReviewAPI.swift */,
+				4C659ADD253647E20072E89A /* RankingAPI.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -475,6 +501,8 @@
 		4C81B2BA25222AB800C20A7D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4C659AD8253646BE0072E89A /* RankList.swift */,
+				4C659AE525364AA70072E89A /* RemainTime.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -491,6 +519,10 @@
 			isa = PBXGroup;
 			children = (
 				4C81B2BD25222AB800C20A7D /* Cells */,
+				4C659AB7253630260072E89A /* RankingHeader.swift */,
+				4C659ABF253630310072E89A /* RankingHeader.xib */,
+				4C659ACB253641C70072E89A /* RankingFooter.swift */,
+				4C659AD0253641D20072E89A /* RankingFooter.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -498,6 +530,8 @@
 		4C81B2BD25222AB800C20A7D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				4C659AC4253633090072E89A /* RankDetailCell.swift */,
+				4C659AC5253633090072E89A /* RankDetailCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -515,6 +549,8 @@
 		4C81B2BF25222AB800C20A7D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4C659B24253734BE0072E89A /* Plan.swift */,
+				4C37D93D25374C6800B8113A /* ProBannerInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -579,6 +615,16 @@
 		4C81B2C725222AB800C20A7D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				4C659A072534C7610072E89A /* DictionaryWordCell.swift */,
+				4C659A082534C7610072E89A /* DictionaryWordCell.xib */,
+				4C659A0E2534CBD60072E89A /* CaptionLineCell.swift */,
+				4C659A0F2534CBD60072E89A /* CaptionLineCell.xib */,
+				4C659AAA2535F5D10072E89A /* DefinitionHeader.swift */,
+				4C659AAF2535F5DA0072E89A /* DefinitionHeader.xib */,
+				4C71442B25262472009FE342 /* KeyTakeAwayCell.xib */,
+				4CA490A3252B9CB400802410 /* LineCell.xib */,
+				4CD51CD1252CEB5D0067C0C5 /* LineCell.swift */,
+				4CD51D1A252CF4750067C0C5 /* WordCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -636,16 +682,6 @@
 			isa = PBXGroup;
 			children = (
 				4C71437D2522A022009FE342 /* VideoContentCell.xib */,
-				4C659A072534C7610072E89A /* DictionaryWordCell.swift */,
-				4C659A082534C7610072E89A /* DictionaryWordCell.xib */,
-				4C659A0E2534CBD60072E89A /* CaptionLineCell.swift */,
-				4C659A0F2534CBD60072E89A /* CaptionLineCell.xib */,
-				4C659AAA2535F5D10072E89A /* DefinitionHeader.swift */,
-				4C659AAF2535F5DA0072E89A /* DefinitionHeader.xib */,
-				4C71442B25262472009FE342 /* KeyTakeAwayCell.xib */,
-				4CA490A3252B9CB400802410 /* LineCell.xib */,
-				4CD51CD1252CEB5D0067C0C5 /* LineCell.swift */,
-				4CD51D1A252CF4750067C0C5 /* WordCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -866,16 +902,19 @@
 				4CA0D9C6252E07CA00806C7E /* ChallengeContentCell.xib in Resources */,
 				4CA0DA75252F7B9500806C7E /* RecordToolBar.xib in Resources */,
 				4C659A0A2534C7610072E89A /* DictionaryWordCell.xib in Resources */,
+				4C659AD1253641D20072E89A /* RankingFooter.xib in Resources */,
 				4C714422252510E0009FE342 /* IntroHeaderView.xib in Resources */,
 				4CA0DA22252F428F00806C7E /* ChallengeDetailHeader.xib in Resources */,
 				4C71444A25264998009FE342 /* MenuButton.xib in Resources */,
 				4C81B2332522280500C20A7D /* Main.storyboard in Resources */,
+				4C659AC7253633090072E89A /* RankDetailCell.xib in Resources */,
 				4CA0DA43252F5CEE00806C7E /* KeyVocabularyCell.xib in Resources */,
 				4CA490A4252B9CB400802410 /* LineCell.xib in Resources */,
 				4C81B2372522280500C20A7D /* Assets.xcassets in Resources */,
 				4CA0DA9F252F9EFB00806C7E /* RecordPanel.xib in Resources */,
 				4CA0DA4A252F630800806C7E /* CommentCell.xib in Resources */,
 				4CA0DA51252F673900806C7E /* RecordCell.xib in Resources */,
+				4C659AC0253630310072E89A /* RankingHeader.xib in Resources */,
 				4CA0D9D5252E083400806C7E /* ChallengeHeaderCell.xib in Resources */,
 				4C81B30A25223CC300C20A7D /* NaviCell.xib in Resources */,
 			);
@@ -1010,6 +1049,7 @@
 				4CDA017A252D05B600C28546 /* SelfSizedCollectionView.swift in Sources */,
 				4C659AAB2535F5D10072E89A /* DefinitionHeader.swift in Sources */,
 				4CA0DA42252F5CEE00806C7E /* KeyVocabularyCell.swift in Sources */,
+				4C659AB8253630260072E89A /* RankingHeader.swift in Sources */,
 				4CE06AD325227CDF00B5D97B /* DailyPickModel.swift in Sources */,
 				4C71444525264882009FE342 /* MenuButton.swift in Sources */,
 				4C71443B252634BE009FE342 /* CaptionLine.swift in Sources */,
@@ -1022,7 +1062,9 @@
 				4CA0DA70252F7B8400806C7E /* RecordToolBar.swift in Sources */,
 				4CA0DA0B252E624100806C7E /* UserConfig.swift in Sources */,
 				4CA0D9DA252E10C600806C7E /* FirstSectionHeaderView.swift in Sources */,
+				4C37D93E25374C6800B8113A /* ProBannerInfo.swift in Sources */,
 				4C81B23A2522280500C20A7D /* URLParameterEncoder.swift in Sources */,
+				4C659B0525364BB30072E89A /* Int_Extension.swift in Sources */,
 				4C81B2412522280500C20A7D /* EndPointType.swift in Sources */,
 				4C81B2392522280500C20A7D /* ParameterEncoding.swift in Sources */,
 				4C81B23E2522280500C20A7D /* NetworkRouter.swift in Sources */,
@@ -1043,11 +1085,14 @@
 				4C659A102534CBD60072E89A /* CaptionLineCell.swift in Sources */,
 				4C71441D252510BB009FE342 /* IntroHeaderView.swift in Sources */,
 				4C71442725261AF6009FE342 /* VideoIntroViewController.swift in Sources */,
+				4C659ADE253647E20072E89A /* RankingAPI.swift in Sources */,
 				4CA0DA9A252F9EF200806C7E /* RecordPanel.swift in Sources */,
 				4C81B2FE25223CC000C20A7D /* NaviView.swift in Sources */,
 				4C7143DA25238900009FE342 /* ContentCell.swift in Sources */,
+				4C659AD9253646BE0072E89A /* RankList.swift in Sources */,
 				4C659A092534C7610072E89A /* DictionaryWordCell.swift in Sources */,
 				4C7143C925237C35009FE342 /* Dictionary_Extension.swift in Sources */,
+				4C659AC6253633090072E89A /* RankDetailCell.swift in Sources */,
 				4C7143F525239234009FE342 /* ProViewController.swift in Sources */,
 				4C81B2242522280500C20A7D /* String_Extension.swift in Sources */,
 				4C81B2382522280500C20A7D /* configs.swift in Sources */,
@@ -1059,6 +1104,7 @@
 				4CA0DA05252E53E800806C7E /* ChallengeDetailModel.swift in Sources */,
 				4C71443125263245009FE342 /* VideoDetailModel.swift in Sources */,
 				4C81B2362522280500C20A7D /* SceneDelegate.swift in Sources */,
+				4C659ACC253641C70072E89A /* RankingFooter.swift in Sources */,
 				4C81B22F2522280500C20A7D /* BaseViewController.swift in Sources */,
 				4C81B3202522467100C20A7D /* VideoAPI.swift in Sources */,
 				4C81B22A2522280500C20A7D /* UIImage_Extension.swift in Sources */,
@@ -1067,9 +1113,11 @@
 				4CA0DAEF2530988D00806C7E /* AudioPlayer.swift in Sources */,
 				4C81B22E2522280500C20A7D /* BaseTabBarController.swift in Sources */,
 				4C81B31225223CCA00C20A7D /* ContentView.swift in Sources */,
+				4C659B25253734BE0072E89A /* Plan.swift in Sources */,
 				4CA0D9EE252E28D000806C7E /* ChallengeModel.swift in Sources */,
 				4CA4909A252B952300802410 /* MenuView.swift in Sources */,
 				4C81B2282522280500C20A7D /* UIColor_Extension.swift in Sources */,
+				4C659AE625364AA70072E89A /* RemainTime.swift in Sources */,
 				4C71438625235DAA009FE342 /* UIViewController_Extension.swift in Sources */,
 				4C81B2292522280500C20A7D /* FileManager_Extension.swift in Sources */,
 				4C7143EB25239128009FE342 /* RankingViewController.swift in Sources */,

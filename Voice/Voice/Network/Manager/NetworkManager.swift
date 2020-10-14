@@ -16,6 +16,7 @@ struct NetworkManager {
     private let videoRouter = Router<VideoAPI>();
     private let challengeRouter = Router<ChallengeAPI>();
     private let reviewRouter = Router<ReviewAPI>();
+    private let rankingRouter = Router<RankingAPI>();
     
     // ============================================================================
     // MARK: - Videos
@@ -359,8 +360,73 @@ struct NetworkManager {
                     
                     do {
                         let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
-                        print(jsonData)
+//                        print(jsonData)
                         let videoData = try JSONDecoder().decode(ArrWrapper<CaptionLine>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    
+    
+    // ============================================================================
+    // MARK: - Ranking
+    // ============================================================================
+    
+    func getUserRankingList(completion: @escaping(_ rank: RankList?, _ error: String?)->()) {
+        
+        rankingRouter.request(.UsersRankingList) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+                        print(jsonData)
+                        let videoData = try JSONDecoder().decode(DictWrapper<RankList>.self, from: responseData)
+                        completion(videoData.data, nil);
+                    } catch {
+                        print(error)
+                        completion(nil, NetworkResponse.unableToDecode.rawValue)
+                    }
+                case .failure(let networkFailureError):
+                    completion(nil, networkFailureError);
+                }
+            }
+        }
+    }
+    
+    
+    func getRemainTime(completion: @escaping(_ remainTime: RemainTime?, _ error: String?)->()) {
+        
+        rankingRouter.request(.RankRemainTime) { (data, response, error) in
+            if error != nil { completion(nil, "Please check your network connection") }
+            if let response = response as? HTTPURLResponse {
+                let result = self.handleNetworkResponse(response)
+                switch result {
+                case .success:
+                    guard let responseData = data else {
+                        completion(nil, NetworkResponse.noData.rawValue);
+                        return
+                    }
+                    
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
+                        print(jsonData)
+                        let videoData = try JSONDecoder().decode(DictWrapper<RemainTime>.self, from: responseData)
                         completion(videoData.data, nil);
                     } catch {
                         print(error)

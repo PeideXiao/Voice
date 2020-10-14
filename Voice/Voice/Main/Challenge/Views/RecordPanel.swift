@@ -90,22 +90,3 @@ class RecordPanel: UIView {
 }
 
 
-extension Int {
-    
-    var formatted: String {
-        
-        if self >= 10 {
-            return String(self);
-        } else {
-            return "0\(self)"
-        }
-    }
-    
-    func convertToTimer() -> String {
-        
-        let m = self/60;
-        let s = self%60;
-        
-        return m.formatted + ":" + s.formatted
-    }
-}

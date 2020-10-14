@@ -42,17 +42,3 @@ class ChallengeHeaderCell: UITableViewCell {
         listenedCountButton.setTitle("\(challenge.totalListened)", for: UIControl.State.normal)
     }
 }
-
-extension Int {
-    
-    func convertToDateString()->String {
-        let date = self.convertToDate();
-        let formatter = DateFormatter();
-        formatter.dateFormat = "MM/dd";
-        return formatter.string(from: date);
-    }
-    
-    func convertToDate()-> Date {
-        return Date(timeIntervalSince1970: TimeInterval(self))
-    }
-}
