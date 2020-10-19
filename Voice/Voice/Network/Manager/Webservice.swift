@@ -1,5 +1,5 @@
 //
-//  NetworkManager.swift
+//  Webservice.swift
 //  NetWorkLayer
 //
 //  Created by Peide Xiao on 1/2/20.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-struct NetworkManager {
-    static let sharedInstance: NetworkManager = NetworkManager();
+struct Webservice {
+    static let sharedInstance: Webservice = Webservice();
     static let enviroment: NetworkEnvironment = .production
     
     

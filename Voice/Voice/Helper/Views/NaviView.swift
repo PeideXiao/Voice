@@ -27,7 +27,7 @@ class NaviView: UIView {
     }
     
     var naviCollectionView: UICollectionView!
-
+    var seporatorLine: UIView!
     weak var delegate: NaviViewDelegate? = nil
     
     var animationBar: UIView!
@@ -56,15 +56,21 @@ class NaviView: UIView {
         naviCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height), collectionViewLayout: naviLayout);
         naviCollectionView.backgroundColor = UIColor.white;
         naviCollectionView.dataSource = self;
-        naviCollectionView?.delegate = self;
+        naviCollectionView.delegate = self;
         naviCollectionView.showsHorizontalScrollIndicator = false;
         naviCollectionView.register(UINib(nibName: "NaviCell", bundle: Bundle.main), forCellWithReuseIdentifier: "naviCell");
         
         animationBar = UIView()
         animationBar.backgroundColor = UIColor.green
         animationBar.frame = CGRect(x: 0, y: self.bounds.height - 3, width: 0, height: 3);
+        
+        seporatorLine = UIView()
+        seporatorLine.backgroundColor = UIColor.lightGray
+        seporatorLine.frame = CGRect(x: 0, y: self.bounds.height - 1.0, width: self.bounds.width, height: 1.0)
+        seporatorLine.alpha = 0.3
     
         addSubview(naviCollectionView);
+        addSubview(seporatorLine);
         addSubview(animationBar);
     }
     

@@ -45,7 +45,7 @@ class VideoPlayerViewController: UIViewController {
         lineTableView.delegate = self;
         lineTableView.tableHeaderView = self.headerView;
         lineTableView.estimatedRowHeight = 100;
-        lineTableView.rowHeight = UITableView.automaticDimension;
+//        lineTableView.rowHeight = UITableView.automaticDimension;
         lineTableView.register(UINib(nibName: "LineCell", bundle: Bundle.main), forCellReuseIdentifier: "lineCell")
         view.addSubview(lineTableView)
     }
@@ -59,7 +59,30 @@ class VideoPlayerViewController: UIViewController {
         header.frame.size.height = header.systemLayoutSizeFitting(CGSize(width: SCREEN_WIDTH, height: 0)).height
     }
     
-    
+    func heightForItem(line: String) -> CGFloat {
+        var row = 1;
+        let leftInset:CGFloat = 8
+        let rightInset:CGFloat = 8
+        let topInset: CGFloat = 8
+        let margin:CGFloat = 5
+        var width_total:CGFloat = leftInset + rightInset;
+        let height:CGFloat = 20
+        
+        let lineWords = line.splitTo(with: " ")
+        
+        for word in lineWords {
+            let wordString = String(word)
+            let width = wordString.widthWithConstrainedHeight(height, UIFont.AvenirNext(weight: .Regular, 17))
+            width_total += margin + width
+            
+            if width_total > SCREEN_WIDTH {
+                width_total = leftInset + rightInset
+                row += 1
+            }
+        }
+        print("\(lineWords)*************\(row)")
+        return topInset * 2 + CGFloat(row) * height + (CGFloat(row - 1)) * margin
+    }
     
     lazy var headerView: UIView = {
         let header = UIView(frame: CGRect.zero)
@@ -97,11 +120,19 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
         guard let line: CaptionLine = self.captionLines?[indexPath.row] else {
             return cell;
         }
-        cell.line  = line
+        cell.line = line
         cell.likeButton.isHidden = indexPath.row != 0
-//        cell.lineLabel.text = line.originalText.text
-        cell.seeMoreButton.isHidden = line.editor == nil
         return cell;
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let line: CaptionLine = self.captionLines?[indexPath.row] else {
+            return 30;
+        }
+        
+        let text = line.originalText.text;
+        return heightForItem(line: text) + (line.editor == nil ? 0 : 35);
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

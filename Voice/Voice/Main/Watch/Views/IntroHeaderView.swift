@@ -80,7 +80,7 @@ class IntroHeaderView: UIView {
     
     lazy var playBtn: UIButton = {
        let btn = UIButton()
-        btn.setImage(UIImage(named: "play"), for: .normal);
+        btn.setImage(UIImage(named: "play-black"), for: .normal);
         btn.addTarget(self, action: #selector(proceedToVideoPlayerViewController), for: UIControl.Event.touchUpInside)
         btn.sizeToFit()
         return btn;

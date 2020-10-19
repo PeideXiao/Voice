@@ -15,51 +15,57 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Final Settlement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xK-zS-qa3">
-                    <rect key="frame" x="188.5" y="23" width="119.5" height="15"/>
-                    <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="15"/>
+                    <rect key="frame" x="159.5" y="20.5" width="111.5" height="20.5"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RfY-0c-1Nu">
-                    <rect key="frame" x="313" y="19.5" width="22" height="22"/>
-                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="281" y="14.5" width="32" height="32"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="00" backgroundImage="calendar" catalog="system">
+                    <state key="normal" title="00" backgroundImage="calendar">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZ7-0q-J4v">
-                    <rect key="frame" x="340" y="20" width="5" height="21"/>
+                    <rect key="frame" x="318" y="20" width="5" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqh-sa-axi">
-                    <rect key="frame" x="350" y="19.5" width="22" height="22"/>
+                    <rect key="frame" x="328" y="14.5" width="32" height="32"/>
                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="00" backgroundImage="calendar" catalog="system">
+                    <state key="normal" title="00" backgroundImage="calendar">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGc-ie-Qhd">
-                    <rect key="frame" x="377" y="20" width="5" height="21"/>
+                    <rect key="frame" x="365" y="20" width="5" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8FV-nq-5KK">
-                    <rect key="frame" x="439" y="21.5" width="23" height="17.5"/>
+                    <rect key="frame" x="427" y="16.5" width="35" height="27.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="hYp-5E-h3V"/>
+                        <constraint firstAttribute="width" secondItem="8FV-nq-5KK" secondAttribute="height" multiplier="23:20" id="suY-4i-0Tg"/>
+                    </constraints>
                     <color key="tintColor" systemColor="systemPurpleColor"/>
                     <state key="normal" backgroundImage="questionmark.folder.fill" catalog="system">
                         <color key="titleColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUL-aY-7sW">
-                    <rect key="frame" x="387" y="19.5" width="22" height="22"/>
+                    <rect key="frame" x="375" y="14.5" width="32" height="32"/>
                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="00" backgroundImage="calendar" catalog="system">
+                    <state key="normal" title="00" backgroundImage="calendar">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
@@ -67,7 +73,7 @@
             <color key="backgroundColor" systemColor="systemGray6Color"/>
             <constraints>
                 <constraint firstItem="8FV-nq-5KK" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2D6-kp-zjw"/>
-                <constraint firstItem="8FV-nq-5KK" firstAttribute="leading" secondItem="LUL-aY-7sW" secondAttribute="trailing" constant="30" id="BmE-vX-Yrg"/>
+                <constraint firstItem="8FV-nq-5KK" firstAttribute="leading" secondItem="LUL-aY-7sW" secondAttribute="trailing" constant="20" id="BmE-vX-Yrg"/>
                 <constraint firstItem="LUL-aY-7sW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Djs-Yb-c8n"/>
                 <constraint firstItem="5xK-zS-qa3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KCk-aP-k5J"/>
                 <constraint firstItem="gZ7-0q-J4v" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Kr6-cA-AsE"/>
@@ -75,7 +81,7 @@
                 <constraint firstItem="Aqh-sa-axi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Xnd-Lf-Wc4"/>
                 <constraint firstItem="Aqh-sa-axi" firstAttribute="leading" secondItem="gZ7-0q-J4v" secondAttribute="trailing" constant="5" id="alk-1V-ZTL"/>
                 <constraint firstItem="gZ7-0q-J4v" firstAttribute="leading" secondItem="RfY-0c-1Nu" secondAttribute="trailing" constant="5" id="f6H-S1-0tg"/>
-                <constraint firstItem="RfY-0c-1Nu" firstAttribute="leading" secondItem="5xK-zS-qa3" secondAttribute="trailing" constant="5" id="fxq-QY-ONI"/>
+                <constraint firstItem="RfY-0c-1Nu" firstAttribute="leading" secondItem="5xK-zS-qa3" secondAttribute="trailing" constant="10" id="fxq-QY-ONI"/>
                 <constraint firstItem="CGc-ie-Qhd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="gSO-82-dyO"/>
                 <constraint firstItem="LUL-aY-7sW" firstAttribute="leading" secondItem="CGc-ie-Qhd" secondAttribute="trailing" constant="5" id="wDN-al-fkp"/>
                 <constraint firstItem="RfY-0c-1Nu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xa8-z8-Xgg"/>
@@ -91,7 +97,7 @@
         </view>
     </objects>
     <resources>
-        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="calendar" width="32" height="32"/>
         <image name="questionmark.folder.fill" catalog="system" width="128" height="97"/>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

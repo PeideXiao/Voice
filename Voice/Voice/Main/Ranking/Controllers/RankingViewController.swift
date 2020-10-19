@@ -25,7 +25,7 @@ class RankingViewController: UIViewController {
     
     func loadRankRemainTime() {
         self.showIndicator(withTitle: nil, and: nil);
-        NetworkManager.sharedInstance.getRemainTime { (remainTime, error) in
+        Webservice.sharedInstance.getRemainTime { (remainTime, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {
@@ -43,7 +43,7 @@ class RankingViewController: UIViewController {
     
     func loadUserRankList() {
         self.showIndicator(withTitle: nil, and: nil);
-        NetworkManager.sharedInstance.getUserRankingList { (rank, error) in
+        Webservice.sharedInstance.getUserRankingList { (rank, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {

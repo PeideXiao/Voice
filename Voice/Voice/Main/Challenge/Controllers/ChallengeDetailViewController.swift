@@ -70,7 +70,7 @@ class ChallengeDetailViewController: UIViewController {
     
     func loadChallengeDetail(id: Int) {
         self.showIndicator(withTitle: nil, and: nil)
-        NetworkManager.sharedInstance.getChallengeDetail(id: id) { (challengeDetail, error) in
+        Webservice.sharedInstance.getChallengeDetail(id: id) { (challengeDetail, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {
@@ -93,7 +93,7 @@ class ChallengeDetailViewController: UIViewController {
     
     func loadOthersComments(id: Int) {
         self.showIndicator(withTitle: nil, and: nil)
-        NetworkManager.sharedInstance.getComments(id: id, mode: FetchMode.Others, offset: 0) { (comments, error) in
+        Webservice.sharedInstance.getComments(id: id, mode: FetchMode.Others, offset: 0) { (comments, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {
@@ -112,7 +112,7 @@ class ChallengeDetailViewController: UIViewController {
     
     func submitComment(data: Data?, text: String) {
         self.showIndicator(withTitle: nil, and: nil)
-        NetworkManager.sharedInstance.submitComment(id: challengeModel.id, data: data, text: text) { (comment, error) in
+        Webservice.sharedInstance.submitComment(id: challengeModel.id, data: data, text: text) { (comment, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {

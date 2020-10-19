@@ -38,7 +38,7 @@ class ReviewViewController: UIViewController {
     
     func loadRecentlyWatched() {
         self.showIndicator(withTitle: nil, and: nil);
-        NetworkManager.sharedInstance.getWatchedVideos(offset: 0) { (watchedVideos, error) in
+        Webservice.sharedInstance.getWatchedVideos(offset: 0) { (watchedVideos, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {
@@ -57,7 +57,7 @@ class ReviewViewController: UIViewController {
     
     func loadSavedVideos() {
         self.showIndicator(withTitle: nil, and: nil);
-        NetworkManager.sharedInstance.getSavedVideos(offset: 0) { (savedVideos, error) in
+        Webservice.sharedInstance.getSavedVideos(offset: 0) { (savedVideos, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {
@@ -76,7 +76,7 @@ class ReviewViewController: UIViewController {
     
     func loadSavedWords() {
         self.showIndicator(withTitle: nil, and: nil);
-        NetworkManager.sharedInstance.getSavedWords(offset: 0, direction: "desc", key: "collectedAt") { (savedWords, error) in
+        Webservice.sharedInstance.getSavedWords(offset: 0, direction: "desc", key: "collectedAt") { (savedWords, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {
@@ -95,7 +95,7 @@ class ReviewViewController: UIViewController {
     
     func loadCaptionLines() {
         self.showIndicator(withTitle: nil, and: nil);
-        NetworkManager.sharedInstance.getSavedCaptionLines(offset: 0, direction: "desc", key: "collectedAt") { (savedLines, error) in
+        Webservice.sharedInstance.getSavedCaptionLines(offset: 0, direction: "desc", key: "collectedAt") { (savedLines, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {
@@ -120,9 +120,17 @@ class ReviewViewController: UIViewController {
 extension ReviewViewController: NaviViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt index: Int) {
         contentView.scrollContent(to: index);
-//        let category:PDCategory = self.categories[index];
-//        page = 0;
-//        self.loadVideos(category: category, offset: page);
+        
+        switch index {
+        case 0:
+            self.loadRecentlyWatched()
+        case 1:
+            self.loadSavedVideos()
+        case 2:
+            self.loadSavedWords()
+        default:
+            self.loadCaptionLines()
+        }
     }
     
 }

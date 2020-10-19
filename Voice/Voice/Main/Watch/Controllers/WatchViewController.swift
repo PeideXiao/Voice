@@ -53,7 +53,7 @@ class WatchViewController: UIViewController {
     }
     
     func loadCategories() {
-        NetworkManager.sharedInstance.getCategories(userId:USER_ID,  completion: { (categories, error) in
+        Webservice.sharedInstance.getCategories(userId:USER_ID,  completion: { (categories, error) in
             if let error = error {
                 print("\(error)")
                 return;
@@ -74,7 +74,7 @@ class WatchViewController: UIViewController {
     
     func loadDailyPick() {
         self.showIndicator(withTitle: nil, and: nil);
-        NetworkManager.sharedInstance.getDailyPick { (dailyPicks, error) in
+        Webservice.sharedInstance.getDailyPick { (dailyPicks, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {
@@ -95,7 +95,7 @@ class WatchViewController: UIViewController {
         guard let category = category else { return }
         currentCategory = category;
         self.showIndicator(withTitle: nil, and: nil);
-        NetworkManager.sharedInstance.getVideos(query: category.query, userId: USER_ID, analyticsKey: category.analyticsKey, offset: offset) { (videos, error) in
+        Webservice.sharedInstance.getVideos(query: category.query, userId: USER_ID, analyticsKey: category.analyticsKey, offset: offset) { (videos, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {

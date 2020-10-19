@@ -23,8 +23,22 @@ class VideoIntroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubViews();
-        self.hidesBottomBarWhenPushed = true;
+//        self.hidesBottomBarWhenPushed = true;
+//        self.navigationItem.hidesBackButton = true
+//        self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back_black"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))]
+
+
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        
+    }
+    
+    @objc func back() {
+        self.navigationController?.popViewController(animated: true)
+   }
     
     func configureSubViews() {
         
@@ -61,7 +75,7 @@ class VideoIntroViewController: UIViewController {
     
     func loadVideoDetail(video: VideoModel) {
         self.showIndicator(withTitle: nil, and: nil);
-        NetworkManager.sharedInstance.getVideoDetail(videoId: video.id) { (videoDetail, error) in
+        Webservice.sharedInstance.getVideoDetail(videoId: video.id) { (videoDetail, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {

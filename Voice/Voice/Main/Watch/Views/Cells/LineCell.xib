@@ -56,7 +56,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNH-zx-11U">
                                         <rect key="frame" x="298" y="0.0" width="100" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="CnI-1D-rpG"/>
                                             <constraint firstAttribute="width" constant="100" id="Smp-M9-k18"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
@@ -66,6 +65,9 @@
                                         </state>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="u8w-JC-zdv"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                     </stackView>
@@ -80,6 +82,7 @@
             <connections>
                 <outlet property="likeButton" destination="oKx-dp-oEZ" id="hUd-fb-l3U"/>
                 <outlet property="seeMoreButton" destination="kNH-zx-11U" id="XvR-bO-8XX"/>
+                <outlet property="seeMoreStackView" destination="Lqe-ez-dmr" id="6Jd-3B-eF6"/>
                 <outlet property="wordCollectionView" destination="YuL-YL-MeT" id="ytn-bk-M2f"/>
                 <outlet property="wordCollectionViewLayout" destination="a1E-5v-CaS" id="Xx4-u7-6hJ"/>
             </connections>

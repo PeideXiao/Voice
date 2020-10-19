@@ -17,7 +17,7 @@ public enum NetworkEnvironment {
 }
 
 fileprivate var environmentBaseURL: String {
-    switch NetworkManager.enviroment {
+    switch Webservice.enviroment {
     case .production: return "https://vtapi.voicetube.com"
     case .qa: return ""
     case .staging:  return ""

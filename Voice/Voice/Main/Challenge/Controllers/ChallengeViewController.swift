@@ -25,7 +25,7 @@ class ChallengeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Pronumciation Challenge"
+        self.navigationItem.title = "Pronunciation Challenge"
         configureSubviews()
         getPronunciationChallenges()
     }
@@ -45,7 +45,7 @@ class ChallengeViewController: UIViewController {
     // ---------------------------------------------------------------------------------
     func getPronunciationChallenges() {
         self.showIndicator(withTitle: nil, and: nil)
-        NetworkManager.sharedInstance.getPronunciationChallenges(offset: 0) { (challengeModels, error) in
+        Webservice.sharedInstance.getPronunciationChallenges(offset: 0) { (challengeModels, error) in
             DispatchQueue.main.async {
                 self.hideIndicator();
                 if let error = error {

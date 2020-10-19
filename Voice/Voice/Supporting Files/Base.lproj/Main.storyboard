@@ -86,7 +86,7 @@
         <scene sceneID="cLQ-HF-MuH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ehk-u6-h8t" customClass="BaseNavigationController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Watch" image="youtube" selectedImage="youtube (1)" id="BmG-8t-QiH">
+                    <tabBarItem key="tabBarItem" title="Watch" image="youtube (1)" selectedImage="youtube" id="BmG-8t-QiH">
                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -146,7 +146,7 @@
         <scene sceneID="tiO-wV-Qu4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pxW-8o-Xzl" customClass="BaseNavigationController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Challenge" image="wechat" selectedImage="wechat (1)" id="enm-dx-bNf">
+                    <tabBarItem key="tabBarItem" title="Challenge" image="wechat (1)" selectedImage="wechat" id="enm-dx-bNf">
                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -204,7 +204,7 @@
         <scene sceneID="JdN-lQ-3uK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Myc-lp-Vrc" customClass="BaseNavigationController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ranking" image="top-three" selectedImage="top-three (1)" id="GBs-8u-d7k">
+                    <tabBarItem key="tabBarItem" title="Ranking" image="rank (1)" selectedImage="rank" id="GBs-8u-d7k">
                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -241,7 +241,7 @@
         <scene sceneID="nLt-r6-Gic">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q0s-1c-PRJ" customClass="BaseNavigationController" customModule="Voice" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Review" image="study" selectedImage="study (1)" id="3oD-9L-cwT">
+                    <tabBarItem key="tabBarItem" title="Review" image="book (1)" selectedImage="book" id="3oD-9L-cwT">
                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -312,26 +312,26 @@
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ec1-Eb-buf">
                                                 <rect key="frame" x="10" y="50" width="394" height="350"/>
-                                                <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="350" id="CWG-oj-3Am"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gpN-bR-BvQ">
-                                                    <size key="itemSize" width="406" height="372"/>
+                                                    <size key="itemSize" width="396" height="281"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bannercell" id="wXp-38-Ufi" customClass="BannerCell" customModule="Voice" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="-11" width="406" height="372"/>
+                                                        <rect key="frame" x="0.0" y="34.5" width="396" height="281"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1mI-mr-yeb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="406" height="372"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="396" height="281"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Unlimited access to our videoos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZx-vC-gLV">
-                                                                    <rect key="frame" x="66" y="50" width="248.5" height="23.5"/>
+                                                                    <rect key="frame" x="74" y="50" width="248.5" height="23.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="5qO-jf-VzC"/>
                                                                     </constraints>
@@ -340,7 +340,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enjoy our specially curated video lessons and learning feature freely! Learn form all your favorite topics and videos!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJm-Ss-i5K">
-                                                                    <rect key="frame" x="50" y="123.5" width="280" height="87.5"/>
+                                                                    <rect key="frame" x="58" y="123.5" width="280" height="87.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="280" id="KES-Hf-5I6"/>
                                                                     </constraints>
@@ -349,7 +349,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUg-bV-KZz">
-                                                                    <rect key="frame" x="90" y="231" width="200" height="40"/>
+                                                                    <rect key="frame" x="98" y="231" width="200" height="40"/>
                                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="5AT-Lg-Iem"/>
@@ -358,6 +358,12 @@
                                                                     <state key="normal" title="Comparition table">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="4"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -369,8 +375,8 @@
                                                                 <constraint firstItem="eJm-Ss-i5K" firstAttribute="centerX" secondItem="1mI-mr-yeb" secondAttribute="centerX" id="pWw-hU-f5l"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
-                                                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
-                                                        <size key="customSize" width="406" height="372"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <size key="customSize" width="396" height="281"/>
                                                         <connections>
                                                             <outlet property="comparionTableButton" destination="yUg-bV-KZz" id="9Yl-Ul-sla"/>
                                                             <outlet property="contentLabel" destination="eJm-Ss-i5K" id="T5R-Nv-EsA"/>
@@ -384,10 +390,10 @@
                                                 </connections>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mix-iQ-ipL">
-                                                <rect key="frame" x="15" y="350" width="384" height="600"/>
+                                                <rect key="frame" x="15" y="350" width="384" height="650"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="wUs-d1-PHy">
-                                                        <rect key="frame" x="0.0" y="10" width="384" height="590.5"/>
+                                                        <rect key="frame" x="0.0" y="20" width="384" height="600.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjK-R9-ccQ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="44"/>
@@ -484,20 +490,29 @@
                                                                 </constraints>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgh-qD-MKv">
-                                                                <rect key="frame" x="0.0" y="478.5" width="384" height="30"/>
+                                                                <rect key="frame" x="0.0" y="478.5" width="384" height="40"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="zHG-sk-APY"/>
+                                                                </constraints>
                                                                 <state key="normal" title="Subscribe Now">
                                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="4"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can cancel your subscription at any time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNe-YO-e8e">
-                                                                <rect key="frame" x="0.0" y="523.5" width="384" height="16"/>
+                                                                <rect key="frame" x="0.0" y="533.5" width="384" height="16"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RK-he-dWM">
-                                                                <rect key="frame" x="0.0" y="554.5" width="384" height="36"/>
+                                                                <rect key="frame" x="0.0" y="564.5" width="384" height="36"/>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                                 <state key="normal" title="Restore purchase"/>
                                                             </button>
@@ -507,13 +522,19 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="wUs-d1-PHy" firstAttribute="leading" secondItem="mix-iQ-ipL" secondAttribute="leading" id="7or-gm-82n"/>
-                                                    <constraint firstItem="wUs-d1-PHy" firstAttribute="top" secondItem="mix-iQ-ipL" secondAttribute="top" constant="10" id="C39-zQ-XaD"/>
-                                                    <constraint firstAttribute="height" constant="600" id="bqJ-Wk-aid"/>
+                                                    <constraint firstItem="wUs-d1-PHy" firstAttribute="top" secondItem="mix-iQ-ipL" secondAttribute="top" constant="20" id="C39-zQ-XaD"/>
+                                                    <constraint firstAttribute="height" constant="650" id="bqJ-Wk-aid"/>
                                                     <constraint firstAttribute="trailing" secondItem="wUs-d1-PHy" secondAttribute="trailing" id="mRF-KF-Upl"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4q-xw-lgG">
-                                                <rect key="frame" x="15" y="970" width="384" height="656"/>
+                                                <rect key="frame" x="15" y="1020" width="384" height="606"/>
                                                 <string key="text">Auto-Renewal Subscriptions
 With auto-renewal you will:
 
@@ -580,14 +601,14 @@ Note: Only credit cards are eligible for payment for subscriptions. Do not sign 
         </scene>
     </scenes>
     <resources>
+        <image name="book" width="32" height="32"/>
+        <image name="book (1)" width="32" height="32"/>
         <image name="firework" width="396" height="154"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="rank" width="32" height="32"/>
+        <image name="rank (1)" width="32" height="32"/>
         <image name="speaker.zzz" catalog="system" width="128" height="85"/>
-        <image name="study" width="32" height="32"/>
-        <image name="study (1)" width="32" height="32"/>
-        <image name="top-three" width="32" height="32"/>
-        <image name="top-three (1)" width="32" height="32"/>
         <image name="vip" width="32" height="32"/>
         <image name="vip (1)" width="32" height="32"/>
         <image name="wechat" width="32" height="32"/>
@@ -605,9 +626,6 @@ Note: Only credit cards are eligible for payment for subscriptions. Do not sign 
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
