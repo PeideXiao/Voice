@@ -71,15 +71,24 @@
                             </stackView>
                         </subviews>
                     </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCC-4Z-4sW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="vG5-sv-Iiw" secondAttribute="bottom" id="0Ft-Bi-VRM"/>
+                    <constraint firstAttribute="trailing" secondItem="oCC-4Z-4sW" secondAttribute="trailing" id="1EB-bc-hi5"/>
+                    <constraint firstItem="oCC-4Z-4sW" firstAttribute="top" secondItem="IXT-NF-7KV" secondAttribute="top" id="5CY-6O-mhd"/>
                     <constraint firstItem="vG5-sv-Iiw" firstAttribute="top" secondItem="IXT-NF-7KV" secondAttribute="top" constant="8" id="AAt-pE-50S"/>
                     <constraint firstAttribute="trailing" secondItem="vG5-sv-Iiw" secondAttribute="trailing" constant="8" id="uUI-zK-3eP"/>
                     <constraint firstItem="vG5-sv-Iiw" firstAttribute="leading" secondItem="IXT-NF-7KV" secondAttribute="leading" constant="8" id="vge-0P-sca"/>
+                    <constraint firstAttribute="bottom" secondItem="oCC-4Z-4sW" secondAttribute="bottom" id="yBB-yl-j2K"/>
+                    <constraint firstItem="oCC-4Z-4sW" firstAttribute="leading" secondItem="IXT-NF-7KV" secondAttribute="leading" id="znd-H3-Caf"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="coverView" destination="oCC-4Z-4sW" id="yaB-e8-d0j"/>
                 <outlet property="likeButton" destination="oKx-dp-oEZ" id="hUd-fb-l3U"/>
                 <outlet property="seeMoreButton" destination="kNH-zx-11U" id="XvR-bO-8XX"/>
                 <outlet property="seeMoreStackView" destination="Lqe-ez-dmr" id="6Jd-3B-eF6"/>

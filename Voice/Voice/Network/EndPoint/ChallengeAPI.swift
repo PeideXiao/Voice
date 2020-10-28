@@ -69,7 +69,7 @@ extension ChallengeAPI: EndPointType {
     
 }
 
-enum FetchMode: String, Decodable {
+enum FetchMode: String, Codable {
     case Mine = "myComments"
     case Others = "othersComments"
     case All = "all"

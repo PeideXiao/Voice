@@ -7,8 +7,7 @@
 
 import UIKit
 
-
-class RankingViewController: UIViewController {
+class RankingViewController: BaseViewController {
 
     var header: RankingHeader!
     var rankingTableView: UITableView!
@@ -24,10 +23,10 @@ class RankingViewController: UIViewController {
     }
     
     func loadRankRemainTime() {
-        self.showIndicator(withTitle: nil, and: nil);
+        let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getRemainTime { (remainTime, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)
@@ -42,10 +41,10 @@ class RankingViewController: UIViewController {
     }
     
     func loadUserRankList() {
-        self.showIndicator(withTitle: nil, and: nil);
+        let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getUserRankingList { (rank, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)

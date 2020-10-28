@@ -7,24 +7,24 @@
 
 import Foundation
 
-struct Word: Decodable {
+struct Word: Codable {
     var text: String
     var isBlank: Bool
 }
 
 
-struct Dictation: Decodable {
+struct Dictation: Codable {
     var words: [Word]
     
 }
 
 
-struct FillingBlank: Decodable {
+struct FillingBlank: Codable {
     var words: [Word]
 }
 
 
-struct DictionaryWord: Decodable {
+struct DictionaryWord: Codable {
     var id: Int
     var text: String
     var CEFRLevel: String
@@ -58,7 +58,7 @@ struct DictionaryWord: Decodable {
  
  */
 
-struct Definition: Decodable {
+struct Definition: Codable {
     var pronunciationUk: String
     var pronunciationUs: String
     var pronunciationKk: String

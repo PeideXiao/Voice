@@ -6,24 +6,35 @@
 //
 
 import UIKit
+import Reachability
 
 class BaseViewController: UIViewController {
-
+    let reachability = try! Reachability()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        networkStatusListener();
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func networkStatusListener() {
+        self.reachability.whenReachable = { reachability in
+            if reachability.connection == .wifi {
+                print("Reachable via WiFi")
+                //            self.showMessage(text: "Reachable via WiFi")
+            } else {
+                print("Reachable via Cellular")
+                //            self.showMessage(text: "Reachable via Cellular")
+            }
+        }
+        self.self.reachability.whenUnreachable = { _ in
+            print("Not reachable")
+            self.showMessage(text: "Network is unavailable")
+        }
+        
+        do {
+            try self.reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+            self.showMessage(text: "Network is unavailable")
+        }
     }
-    */
-
 }

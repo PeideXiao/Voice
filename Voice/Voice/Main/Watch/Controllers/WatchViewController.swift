@@ -8,8 +8,7 @@
 import UIKit
 import MBProgressHUD
 
-
-class WatchViewController: UIViewController {
+class WatchViewController: BaseViewController {
     
     var navi: NaviView!
     var contentView: ContentView!
@@ -19,11 +18,11 @@ class WatchViewController: UIViewController {
     var videos:[VideoModel] = [];
     var page:Int = 0;
     var currentCategory: PDCategory!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\(STATUS_BAR_Hight)***\(NAVI_BAR_HEIGHT)*****\(TAB_BAR_HEIGHT)")
-        
+    
         configCollectionViews();
         loadCategories();
         loadDailyPick();
@@ -53,6 +52,12 @@ class WatchViewController: UIViewController {
     }
     
     func loadCategories() {
+        
+        let key = "category"
+        if let categories = UserDefaultConfig<[PDCategory]>.value(for: key){
+            self.handle(categories: categories)
+        }
+        
         Webservice.sharedInstance.getCategories(userId:USER_ID,  completion: { (categories, error) in
             if let error = error {
                 print("\(error)")
@@ -61,22 +66,24 @@ class WatchViewController: UIViewController {
             
             if let categories = categories {
                 DispatchQueue.main.async {
-                    self.categories = categories;
-                    
-                    let titles = self.categories.map({$0.title})
-                    self.navi.titles = titles
-                    self.contentView.items = categories;
-                    self.loadVideos(category: self.categories.first, offset: self.page);
+                    self.handle(categories: categories)
+                    UserDefaultConfig<[PDCategory]>.save(categories, with: key)
                 }
             }
         })
     }
     
     func loadDailyPick() {
-        self.showIndicator(withTitle: nil, and: nil);
+        let cacheKey = "dailyPicks"
+        if let dailyPicks = UserDefaultConfig<[DailyPickItem]>.value(for: cacheKey) {
+            self.dailyPicks = dailyPicks;
+            self.contentView.dailyPickItems = dailyPicks;
+        }
+        
+       let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getDailyPick { (dailyPicks, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)
@@ -86,6 +93,7 @@ class WatchViewController: UIViewController {
                 if let dailyPicks = dailyPicks {
                     self.dailyPicks = dailyPicks;
                     self.contentView.dailyPickItems = dailyPicks;
+                    UserDefaultConfig<[DailyPickItem]>.save(dailyPicks, with: cacheKey)
                 }
             }
         }
@@ -93,11 +101,18 @@ class WatchViewController: UIViewController {
     
     func loadVideos(category: PDCategory?, offset: Int) {
         guard let category = category else { return }
+        let hud = self.showIndicator(withTitle: nil, and: nil);
+
+        let key: String = "video_\(category.id)"
+        if let videos = UserDefaultConfig<[VideoModel]>.value(for: key) {
+            self.videos = videos
+            self.contentView.updateContentView(items:self.videos, cellType: .video);
+        }
+        
         currentCategory = category;
-        self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getVideos(query: category.query, userId: USER_ID, analyticsKey: category.analyticsKey, offset: offset) { (videos, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)
@@ -109,6 +124,7 @@ class WatchViewController: UIViewController {
                         self.videos.removeAll();
                     }
                     self.videos.append(contentsOf: videos);
+                    UserDefaultConfig.save(self.videos, with: key)
                     self.contentView.updateContentView(items:self.videos, cellType: .video);
                 }
             }
@@ -124,6 +140,15 @@ class WatchViewController: UIViewController {
         let videoIntroVC: VideoIntroViewController = VideoIntroViewController();
         videoIntroVC.video = video;
         self.navigationController?.pushViewController(videoIntroVC, animated: true);
+    }
+    
+    
+    func handle(categories: [PDCategory]) {
+        self.categories = categories;
+        let titles = self.categories.map({$0.title})
+        self.navi.titles = titles
+        self.contentView.items = categories;
+        self.loadVideos(category: self.categories.first, offset: self.page);
     }
 }
 

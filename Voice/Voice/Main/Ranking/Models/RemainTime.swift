@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct RemainTime: Decodable {
+struct RemainTime: Codable {
     var remainTime: Int
 }

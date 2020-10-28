@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct PDCategory: Decodable {
+struct PDCategory: Codable {
 
     var id: Int
     var imageUrl: String
@@ -37,11 +37,11 @@ struct PDCategory: Decodable {
 //    }
 //}
 
-struct ArrWrapper<T: Decodable>: Decodable {
+struct ArrWrapper<T: Codable>: Codable {
     let data: [T]
 }
 
-struct DictWrapper<T:Decodable>: Decodable {
+struct DictWrapper<T:Codable>: Codable {
     var data:T
 }
 

@@ -14,6 +14,8 @@ class RankingFooter: UIView {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var notiLabel: UILabel!
+    @IBOutlet weak var learnMoreuButton: UIButton!
+    @IBOutlet weak var star: UIImageView!
     
     var rankList: RankList! {
         didSet {
@@ -26,7 +28,11 @@ class RankingFooter: UIView {
                     userNameLabel.text = firstUser.name
                     
                 }
+                notiLabel.text = "Do you want to lean freely without useing \"Tickets\"? \nCheck out our subscripition plans!"
                 scoreLabel.text = String(first.points)
+                learnMoreuButton.backgroundColor = UIColor.systemPurple
+                learnMoreuButton.setTitleColor(UIColor.white, for: .normal);
+                star.tintColor = UIColor.systemYellow
             }
         }
     }

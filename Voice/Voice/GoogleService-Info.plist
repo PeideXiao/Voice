@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>965765442031-7i6arnhkgime9k5992m32nhdjrcpme26.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.965765442031-7i6arnhkgime9k5992m32nhdjrcpme26</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDz1bUPtmEwx5KWMr-rpyP1O1gB9eGhVsQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>965765442031</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>JM.Voice</string>
+	<key>PROJECT_ID</key>
+	<string>voice-48449</string>
+	<key>STORAGE_BUCKET</key>
+	<string>voice-48449.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:965765442031:ios:15e78e7ef5c43852bfae1a</string>
+	<key>DATABASE_URL</key>
+	<string>https://voice-48449.firebaseio.com</string>
+</dict>
+</plist>

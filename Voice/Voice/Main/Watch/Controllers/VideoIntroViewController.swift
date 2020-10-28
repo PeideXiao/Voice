@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VideoIntroViewController: UIViewController {
+class VideoIntroViewController: BaseViewController {
 
     var video: VideoModel! {
         didSet {
@@ -74,10 +74,10 @@ class VideoIntroViewController: UIViewController {
     
     
     func loadVideoDetail(video: VideoModel) {
-        self.showIndicator(withTitle: nil, and: nil);
+        let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getVideoDetail(videoId: video.id) { (videoDetail, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)

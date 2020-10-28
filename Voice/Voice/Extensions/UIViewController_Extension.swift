@@ -11,17 +11,18 @@ import MBProgressHUD
 
 
 extension UIViewController {
-    func showIndicator(withTitle title: String?, and description: String?) {
+    func showIndicator(withTitle title: String?, and description: String?) -> MBProgressHUD {
 
         let indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
         indicator.label.text = title
         indicator.detailsLabel.text = description
         indicator.isUserInteractionEnabled = false
         indicator.show(animated: true)
+        return indicator
     }
     
-    func hideIndicator() {
-        MBProgressHUD.hide(for: self.view, animated: true)
+    func hideIndicator(hud: MBProgressHUD) {
+        hud.hide(animated: true)
     }
     
     

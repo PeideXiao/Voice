@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReviewViewController: UIViewController {
+class ReviewViewController: BaseViewController {
 
     let categories:[String] = ["Recently watched", "Saved Videos","Saved Words", "Saved Sentences"]
     var navi: NaviView!
@@ -37,10 +37,10 @@ class ReviewViewController: UIViewController {
     }
     
     func loadRecentlyWatched() {
-        self.showIndicator(withTitle: nil, and: nil);
+        let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getWatchedVideos(offset: 0) { (watchedVideos, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)
@@ -56,10 +56,10 @@ class ReviewViewController: UIViewController {
     }
     
     func loadSavedVideos() {
-        self.showIndicator(withTitle: nil, and: nil);
+        let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getSavedVideos(offset: 0) { (savedVideos, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)
@@ -75,10 +75,10 @@ class ReviewViewController: UIViewController {
     }
     
     func loadSavedWords() {
-        self.showIndicator(withTitle: nil, and: nil);
+        let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getSavedWords(offset: 0, direction: "desc", key: "collectedAt") { (savedWords, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)
@@ -94,10 +94,10 @@ class ReviewViewController: UIViewController {
     }
     
     func loadCaptionLines() {
-        self.showIndicator(withTitle: nil, and: nil);
+        let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getSavedCaptionLines(offset: 0, direction: "desc", key: "collectedAt") { (savedLines, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)

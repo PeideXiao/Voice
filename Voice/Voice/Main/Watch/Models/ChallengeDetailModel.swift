@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChallengeDetailModel: Decodable {
+struct ChallengeDetailModel: Codable {
     var videoId: Int
     var content: String
     var duration: Double
@@ -36,13 +36,13 @@ struct ChallengeDetailModel: Decodable {
              }],
              "text": "flicker "
  */
-struct Vocabulary: Decodable {
+struct Vocabulary: Codable {
     var id: Int
     var definitions: [DefinitionModel]
     var text: String
 }
 
-struct DefinitionModel: Decodable {
+struct DefinitionModel: Codable {
     var content: String
     var text: String
     var kk: String
@@ -69,7 +69,7 @@ struct DefinitionModel: Decodable {
              "liked": false
  */
 
-struct Comment: Decodable {
+struct Comment: Codable {
     var audioUrl: String?
     var content: String?
     var createdAt: Int

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17503.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="naviCell" id="RRn-uN-Q2g" customClass="NaviCell" customModule="Voice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="125" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IOI-Kw-RU0">
+                <rect key="frame" x="0.0" y="0.0" width="125" height="36"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DS-Sb-6BU">
+                        <rect key="frame" x="43.5" y="8" width="38" height="20.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9DS-Sb-6BU" firstAttribute="centerY" secondItem="IOI-Kw-RU0" secondAttribute="centerY" id="DG9-25-aLZ"/>
+                    <constraint firstItem="9DS-Sb-6BU" firstAttribute="centerX" secondItem="IOI-Kw-RU0" secondAttribute="centerX" id="Yuq-gy-OGs"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="125" height="36"/>
+            <connections>
+                <outlet property="titleLabel" destination="9DS-Sb-6BU" id="ybZ-mg-Z8U"/>
+            </connections>
+            <point key="canvasLocation" x="-176.08695652173915" y="99.107142857142847"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChallengeViewController: UIViewController {
+class ChallengeViewController: BaseViewController {
     
     
     // ============================================================================
@@ -44,10 +44,10 @@ class ChallengeViewController: UIViewController {
     // API Actions
     // ---------------------------------------------------------------------------------
     func getPronunciationChallenges() {
-        self.showIndicator(withTitle: nil, and: nil)
+        let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getPronunciationChallenges(offset: 0) { (challengeModels, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)

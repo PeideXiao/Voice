@@ -8,8 +8,10 @@
 import UIKit
 import youtube_ios_player_helper
 
-class VideoPlayerViewController: UIViewController {
+class VideoPlayerViewController: BaseViewController {
 
+    var itemHeightCache:[String: CGFloat] = [:]
+    
     var videoDetail: VideoDetailModel! {
         didSet {
             self.videoPlayer.load(withVideoId: self.videoDetail.youtubeId, playerVars: ["playsinline": 1, "autoplay": 1, "enablejsapi": 1])
@@ -28,6 +30,12 @@ class VideoPlayerViewController: UIViewController {
         super.viewDidLoad()
         configureSubViews();
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning();
+        itemHeightCache = [:]
+    }
+    
     
     func configureSubViews() {
         self.title = "Play";
@@ -80,7 +88,7 @@ class VideoPlayerViewController: UIViewController {
                 row += 1
             }
         }
-        print("\(lineWords)*************\(row)")
+        print("\(line)*************\(row)")
         return topInset * 2 + CGFloat(row) * height + (CGFloat(row - 1)) * margin
     }
     
@@ -131,8 +139,14 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
             return 30;
         }
         
+        if let height = itemHeightCache["\(line.originalText.id)"] {
+            return height;
+        }
+        
         let text = line.originalText.text;
-        return heightForItem(line: text) + (line.editor == nil ? 0 : 35);
+        let height = heightForItem(line: text) + (line.editor == nil ? 0 : 40);
+        itemHeightCache["\(line.originalText.id)"] =  height
+        return height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -142,6 +156,7 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
         if let lastCell = lastCell { lastCell.likeButton.isHidden = true; }
         let cell: LineCell = tableView.cellForRow(at: indexPath) as! LineCell
         cell.likeButton.isHidden = false;
+        cell.coverView.isHidden = true;
         videoPlayer.seek(toSeconds: Float(line.startAt), allowSeekAhead: true)
         lastCell = cell;
     }
@@ -151,15 +166,31 @@ extension VideoPlayerViewController: YTPlayerViewDelegate {
     func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
         guard let captionLines = self.captionLines else {return}
         if let index = captionLines.firstIndex(where: { $0.startAt + $0.duration > playTime }) {
-            if let lastCell = lastCell { lastCell.likeButton.isHidden = true; }
+            if let lastCell = lastCell {
+                lastCell.likeButton.isHidden = true;
+                lastCell.coverView.isHidden = false;
+            }
             let indexPath = IndexPath(row: index, section: 0);
             lineTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.middle);
             if let cell = self.lineTableView.cellForRow(at: indexPath) as? LineCell {
                 cell.likeButton.isHidden = false;
+                cell.coverView.isHidden = true;
                 lastCell = cell;
             }
         }
     }
+}
+
+extension VideoPlayerViewController: UIScrollViewDelegate {
+
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        videoPlayer.delegate = nil
+//    }
+//    
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        videoPlayer.delegate = self
+//    }
 }
 
 

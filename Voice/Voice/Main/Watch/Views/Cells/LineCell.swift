@@ -10,6 +10,7 @@ import UIKit
 class LineCell: UITableViewCell {
     
     
+    @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var wordCollectionView: UICollectionView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var seeMoreButton: UIButton!
@@ -37,8 +38,7 @@ class LineCell: UITableViewCell {
         wordCollectionViewLayout.minimumInteritemSpacing = 5;
         wordCollectionViewLayout.minimumLineSpacing = 5;
         wordCollectionView.register(UINib(nibName: "WordCell", bundle: Bundle.main), forCellWithReuseIdentifier: "wordCell")
-       
-    
+
     }
 
 }
@@ -61,6 +61,11 @@ extension LineCell: UICollectionViewDataSource, UICollectionViewDelegate, UIColl
         guard let words = words else { return CGSize.zero }
         let word:String = String(words[indexPath.item])
         return CGSize(width: word.widthWithConstrainedHeight(20, UIFont(name: "AvenirNext-Regular", size: 16)!), height: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let word:String = String(self.words![indexPath.item])
+        print(word)
     }
 }
 

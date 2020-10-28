@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct RankList: Decodable {
+struct RankList: Codable {
     var today: [RankItem]
     var yesterday: [RankItem]
 }
 
 
-struct RankItem: Decodable {
+struct RankItem: Codable {
     var rank: Int
     var points: Int
     var size: Int
@@ -23,7 +23,7 @@ struct RankItem: Decodable {
 }
 
 
-struct RankUser: Decodable {
+struct RankUser: Codable {
     var id: Int
     var name: String
     var avatar: String

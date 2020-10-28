@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VideoModel:Decodable {
+struct VideoModel:Codable {
     var id: Int;
     var youtubeId: String;
     var imageUrl: String;

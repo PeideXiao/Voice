@@ -21,7 +21,7 @@ import Foundation
 //"totalListened": 31,
 //"youtubeId": "wHZtCJlXbBQ"
 
-struct ChallengeModel: Decodable {
+struct ChallengeModel: Codable {
     var videoId: Int
     var content: String
     var duration: Double
@@ -37,7 +37,7 @@ struct ChallengeModel: Decodable {
 }
 
 
-struct Host: Decodable {
+struct Host: Codable {
     var avatarUrl: String
     var displayName: String
 }

@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct DailyPickModel: Decodable {
+struct DailyPickModel: Codable {
     var greeting: String
     var items:[DailyPickItem]
     
     
 }
 
-struct DailyPickItem: Decodable {
+struct DailyPickItem: Codable {
     var id: Int
     var startAt: Int
     var endAt: Int

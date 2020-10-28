@@ -9,6 +9,7 @@
 import UIKit
 
 let kBoundary = "alamofire.boundary.2f832832f886c5c1"
+
 //public typealias NetworkRouterCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?)->()
 public enum NetworkEnvironment {
     case qa
@@ -39,21 +40,23 @@ protocol NetworkRouter: class {
 }
 
 class Router<EndPoint: EndPointType>: NetworkRouter {
+
     public func request(_ router: EndPoint, completion: @escaping NetworkRouterCompletion) {
-        let session = URLSession.shared
         
+        let session = URLSession.shared
         do {
             let request = try self.buildRequest(from: router);
             print("***\(request.url!)")
             task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-                guard let data = data else { return }
                 completion(data, response, error);
             })
             task!.resume();
         } catch {
             completion(nil, nil, error)
         }
+        
     }
+    
     
     
     public func cancel() {
@@ -112,7 +115,7 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
     
     fileprivate func fetchHttpBody(bodyParameters: Parameters?, fileParameters: Parameters?) -> Data?{
         var data = Data()
-       
+        
         if fileParameters != nil {
             for(k, v) in fileParameters! {
                 let headerStr = "\r\n--\(kBoundary)\r\n" + "Content-Disposition: form-data; name=\"soundFile\"; filename=\"\(k)\"\r\n" + "Content-Type: audio/x-m4a\r\n\r\n";

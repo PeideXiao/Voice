@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VideoDetailModel: Decodable {
+struct VideoDetailModel: Codable {
     
     var accent: String?;
     var captioned: Bool;
@@ -32,25 +32,25 @@ struct VideoDetailModel: Decodable {
 }
 
 
-struct CaptionModel: Decodable {
+struct CaptionModel: Codable {
     var editable: Bool;
     var translated: Bool;
     var translatedByBot: Bool;
 }
 
 
-struct ProCategoryModel: Decodable {
+struct ProCategoryModel: Codable {
     var id: String;
     var title: String;
 }
 
-struct PointModel: Decodable {
+struct PointModel: Codable {
     var stage: String;
     var points: Int;
 }
 
 
-struct MenuModel: Decodable {
+struct MenuModel: Codable {
     var id: String;
     var enabled: Bool;
     var text: String;

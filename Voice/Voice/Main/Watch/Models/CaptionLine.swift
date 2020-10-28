@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CaptionLine: Decodable {
+struct CaptionLine: Codable {
     var startAt: Float;
     var duration: Float;
     var originalText: OriginalText;
@@ -18,7 +18,7 @@ struct CaptionLine: Decodable {
 }
 
 
-struct OriginalText: Decodable {
+struct OriginalText: Codable {
     //    "id": 25881703,
     //    "captionId": 122324,
     //    "text": "From sailors who were turned into pigs, nymphs that sprouted into trees, and a gaze that converted the beholder to stone, Greek mythology brims with shape-shifters."
@@ -29,13 +29,13 @@ struct OriginalText: Decodable {
 }
 
 
-struct Editor: Decodable {
+struct Editor: Codable {
     var sentence: String;
     var items: [EditItem];
 }
 
 
-struct EditItem: Decodable {
+struct EditItem: Codable {
     
 //    "text": "gaze",
 //    "descriptions": [],
@@ -49,6 +49,6 @@ struct EditItem: Decodable {
 }
 
 
-struct EditExample: Decodable {
+struct EditExample: Codable {
     var originalText: String
 }

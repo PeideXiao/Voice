@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Decodable {
+struct User: Codable {
 //    "avatarUrl": "https:\/\/cdn.voicetube.com\/tmp\/avatar\/329e5de8052af71.jpg?t=1529244861",
 //    "contentLanguage": "zhTW",
 //    "displayName": "April Lu",

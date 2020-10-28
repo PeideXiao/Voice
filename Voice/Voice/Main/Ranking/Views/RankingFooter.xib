@@ -90,7 +90,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="command.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="52P-Ne-U5n">
                                                     <rect key="frame" x="-4" y="2.5" width="38" height="37"/>
-                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="38" id="EWO-OE-b2C"/>
                                                         <constraint firstAttribute="width" secondItem="52P-Ne-U5n" secondAttribute="height" multiplier="1:1" id="ceX-uq-qNc"/>
@@ -121,7 +121,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pkY-Ey-wo1">
                                                     <rect key="frame" x="1.5" y="10.5" width="22" height="20"/>
-                                                    <color key="tintColor" systemColor="systemYellowColor"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -159,7 +159,7 @@
                                 <constraint firstAttribute="height" constant="55" id="zwP-P4-4A0"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to lean freely without useing &quot;Tickets&quot;? Check out our subscripition plans!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXA-AG-cjk">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXA-AG-cjk">
                             <rect key="frame" x="0.0" y="99" width="414" height="100"/>
                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                             <constraints>
@@ -174,13 +174,13 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4I-F8-GpB">
                                     <rect key="frame" x="147" y="12.5" width="120" height="36"/>
-                                    <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="g7g-Ry-ofa"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                     <state key="normal" title="Learn more">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="titleColor" systemColor="systemGray6Color"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -210,9 +210,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="learnMoreuButton" destination="R4I-F8-GpB" id="gd7-rP-o5R"/>
                 <outlet property="notiLabel" destination="bXA-AG-cjk" id="f6M-yQ-fu8"/>
                 <outlet property="rankLabel" destination="rCV-PD-i7p" id="mDl-Vg-yh7"/>
                 <outlet property="scoreLabel" destination="suc-nU-BMU" id="Qi7-qP-dC1"/>
+                <outlet property="star" destination="pkY-Ey-wo1" id="a7V-dK-u6h"/>
                 <outlet property="userIconImage" destination="52P-Ne-U5n" id="CL3-Mi-480"/>
                 <outlet property="userNameLabel" destination="ezH-M1-oAR" id="0WL-Ba-RpM"/>
             </connections>
@@ -232,9 +234,6 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ChallengeDetailViewController: UIViewController {
+class ChallengeDetailViewController: BaseViewController {
     
     
     // ============================================================================
@@ -69,10 +69,10 @@ class ChallengeDetailViewController: UIViewController {
     // ---------------------------------------------------------------------------------
     
     func loadChallengeDetail(id: Int) {
-        self.showIndicator(withTitle: nil, and: nil)
+        let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getChallengeDetail(id: id) { (challengeDetail, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)
@@ -92,10 +92,10 @@ class ChallengeDetailViewController: UIViewController {
     }
     
     func loadOthersComments(id: Int) {
-        self.showIndicator(withTitle: nil, and: nil)
+        let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.getComments(id: id, mode: FetchMode.Others, offset: 0) { (comments, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)
@@ -111,10 +111,10 @@ class ChallengeDetailViewController: UIViewController {
     }
     
     func submitComment(data: Data?, text: String) {
-        self.showIndicator(withTitle: nil, and: nil)
+        let hud = self.showIndicator(withTitle: nil, and: nil);
         Webservice.sharedInstance.submitComment(id: challengeModel.id, data: data, text: text) { (comment, error) in
             DispatchQueue.main.async {
-                self.hideIndicator();
+                self.hideIndicator(hud: hud);
                 if let error = error {
                     print("\(error)")
                     self.showMessage(text: error)
