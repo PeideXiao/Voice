@@ -43,9 +43,6 @@ extension String {
     }
     
     // Voice02
-    // 02-02
-    // 02-02-02
-    // 01
 }
 
 extension String {
