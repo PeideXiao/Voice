@@ -10,7 +10,5 @@ import Foundation
 class UserConfig: NSObject {
     
     static let sharedInstance: UserConfig = UserConfig()
-    
     var userId: Int = 4122002
-    
 }
